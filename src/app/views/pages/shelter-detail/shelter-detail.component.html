@@ -1,0 +1,86 @@
+<div class="container p-4">
+  <div class="info pt-4">
+    <div class="pet-info my-auto">
+      <h1 class="ps-4">{{ requestInfo.shelterName }}</h1>
+      <div class="basic-info ps-4">
+        <h5><b>Email:</b> {{ requestInfo.representativeEmailAddress }}</h5>
+        <h5>
+          <b>Số điện thoại:</b>
+          {{ requestInfo.shelterPhoneNo }}
+        </h5>
+        <h5>
+          <b>Mạng xã hội:</b> {{ requestInfo.representativeFacebookLink }}
+        </h5>
+        <h5><b>Địa chỉc:</b> {{ requestInfo.unitNoAndStreet }}</h5>
+      </div>
+
+      <!-- <p-divider align="left" class="pt-2">
+        <div class="inline-flex align-items-center">
+          <b>Tình trạng</b>
+        </div>
+      </p-divider>
+      <div class="status-info ps-4 pt-2">
+        <h5>
+          <b>Tiêm phòng:</b>
+          {{ requestInfo.animal.vaccinated ? "Đã tiêm" : "Chưa" }}
+        </h5>
+        <h5>
+          <b>Triệt sản:</b> {{ requestInfo.animal.deWormed ? "Rồi" : "Chưa" }}
+        </h5>
+        <h5>
+          <b>Xổ giun:</b> {{ requestInfo.animal.sterilized ? "Rồi" : "Chưa" }}
+        </h5>
+        <h5>
+          <b>Thân thiện:</b> {{ requestInfo.animal.friendly ? "Có" : "Không" }}
+        </h5>
+      </div>
+      <p-divider align="left" class="pt-2">
+        <div class="inline-flex align-items-center">
+          <b>Người nhận nuôi online</b>
+        </div>
+      </p-divider>
+
+      <div class="ps-4" *ngFor="let user of requestInfo.animal.onlineAdaptors">
+        <p-avatar image="{{ user }}" size="large" shape="circle"></p-avatar>
+      </div>
+      <div class="ps-4 p-2" *ngIf="requestInfo.animal.onlineAdopters">
+        Hiện tại chưa có người nhận nuôi
+      </div> -->
+    </div>
+    <div class="pet-img">
+      <img
+        class="rounded-3"
+        src="{{
+          requestInfo.animal.animalImg
+            ? requestInfo.animal.animalImg
+            : 'https://firebasestorage.googleapis.com/v0/b/advance-totem-350103.appspot.com/o/Avatar%2Fava-default_pet_pfp.png?alt=media&token=3fcf7cb9-a92b-402e-bc2c-08d632d62ae0'
+        }}"
+        alt=""
+      />
+    </div>
+  </div>
+  <p-divider align="left">
+    <div class="inline-flex align-items-center">
+      <h5><b>Thông tin người nhận nuôi</b></h5>
+    </div>
+  </p-divider>
+  <div class="user pt-4 ps-4">
+    <div class="user-info d-flex p-3 rounded-4">
+      <img
+        class="rounded-circle col-4"
+        [src]="
+          requestInfo.user.userAvatar
+            ? requestInfo.user.userAvatar
+            : 'https://firebasestorage.googleapis.com/v0/b/advance-totem-350103.appspot.com/o/Avatar%2Fava-default_pfp.png?alt=media&token=f0abd1ae-d5c5-4b0f-b138-f3708619a963'
+        "
+        alt=""
+      />
+    </div>
+    <div class="button">
+      <button class="btn btn-primary" (click)="acceptRequest()">
+        Chấp nhận
+      </button>
+    </div>
+  </div>
+</div>
+<p-toast key="message"></p-toast>
