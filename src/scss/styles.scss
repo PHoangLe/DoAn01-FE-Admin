@@ -53,4 +53,9 @@ $enable-rtl: true;
     border: solid 3px var(--primary-color);
     color: var(--primary-color);
   }
+  .p-divider.p-divider-horizontal {
+    .p-divider-content {
+      background-color: transparent;
+    }
+  }
 }
