@@ -9,6 +9,28 @@ import { Page500Component } from './page500/page500.component';
 import { ButtonModule, CardModule, FormModule, GridModule } from '@coreui/angular';
 import { IconModule } from '@coreui/icons-angular';
 import { FormsModule } from '@angular/forms';
+import { ShelterRequestComponent } from './shelter-request/shelter-request.component';
+import { AdoptionDetailComponent } from './adoption-detail/adoption-detail.component';
+import { AdoptionRequestComponent } from './request-list/adoption-request.component';
+
+
+import { DividerModule } from 'primeng/divider';
+import { PaginatorModule } from 'primeng/paginator';
+import { DataViewModule } from 'primeng/dataview';
+import { RadioButtonModule } from 'primeng/radiobutton';
+import { BreadcrumbModule } from 'primeng/breadcrumb';
+import { DynamicDialogModule } from 'primeng/dynamicdialog';
+import { TableModule } from 'primeng/table';
+import { GalleriaModule } from 'primeng/galleria';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { AvatarModule } from 'primeng/avatar';
+import { ToastModule } from 'primeng/toast';
+import { MessagesModule } from 'primeng/messages';
+import { MessageModule } from 'primeng/message';
+import { ConfirmationService, MessageService } from 'primeng/api';
+import { TagModule } from 'primeng/tag';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ShelterDetailComponent } from './shelter-detail/shelter-detail.component';
 
 
 
@@ -17,7 +39,12 @@ import { FormsModule } from '@angular/forms';
     LoginComponent,
     RegisterComponent,
     Page404Component,
-    Page500Component
+    Page500Component,
+    ShelterRequestComponent,
+    AdoptionDetailComponent,
+    AdoptionRequestComponent,
+    ShelterDetailComponent
+
   ],
   imports: [
     CommonModule,
@@ -27,8 +54,25 @@ import { FormsModule } from '@angular/forms';
     GridModule,
     IconModule,
     FormModule,
-    FormsModule
-  ]
+    FormsModule,
+    DividerModule,
+    DividerModule,
+    PaginatorModule,
+    DataViewModule,
+    RadioButtonModule,
+    BreadcrumbModule,
+    DynamicDialogModule,
+    TableModule,
+    InputTextareaModule,
+    GalleriaModule,
+    AvatarModule,
+    ToastModule,
+    MessageModule,
+    MessagesModule,
+    TagModule,
+    ConfirmDialogModule
+  ],
+  providers: [MessageService]
 })
 export class PagesModule {
 }

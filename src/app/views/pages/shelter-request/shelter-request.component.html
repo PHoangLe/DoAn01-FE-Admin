@@ -1,0 +1,40 @@
+<div class="content">
+  <p-table
+    [value]="listRequest"
+    [paginator]="true"
+    [rows]="5"
+    selectionMode="single"
+    [tableStyle]="{ 'min-width': '25rem' }"
+    stripedRows="true"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="min-width: 10%">Tên trại cứu trợ</th>
+        <th style="min-width: 10%">Email</th>
+        <th style="min-width: 50%">Địa chỉ</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-request>
+      <tr class="p-selectable-row" (click)="onRowSelect(request)">
+        <td>
+          {{ request.shelterName }}
+        </td>
+        <td>
+          {{ request.representativeEmailAddress }}
+        </td>
+        <td>
+          {{
+            request.unitNoAndStreet +
+              ", " +
+              request.ward +
+              ", " +
+              request.district +
+              ", " +
+              request.city
+          }}
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+<p-toast key="reactAdoption"></p-toast>

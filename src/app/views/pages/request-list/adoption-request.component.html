@@ -1,0 +1,47 @@
+<div class="content">
+  <p-table
+    [value]="listRequest"
+    [paginator]="true"
+    [rows]="5"
+    selectionMode="single"
+    [tableStyle]="{ 'min-width': '25rem' }"
+    stripedRows="true"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="min-width: 10%" class="ps-4">Tên thú cưng</th>
+        <th style="min-width: 10%">Tên người nhận nuôi</th>
+        <th style="min-width: 10%">Ngày gửi yêu cầu</th>
+        <th style="min-width: 10%" class="d-flex justify-content-center">
+          Tình trạng
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-request>
+      <tr class="p-selectable-row" (click)="onRowSelect(request)">
+        <td class="ps-4">
+          {{ request.animal.animalName }}
+        </td>
+        <td>
+          {{ request.user.userFirstName + " " + request.user.userLastName }}
+        </td>
+        <td>
+          {{ request.date | date : "dd/MM/yyyy" }}
+        </td>
+        <td class="d-flex justify-content-center border border-0">
+          <p-tag
+            [value]="
+              request.applicationStatus === 'PENDING'
+                ? 'Đang chờ'
+                : request.applicationStatus === 'COMPLETED'
+                ? 'Đã xác nhận'
+                : 'Từ chối'
+            "
+            [severity]="getSeverity(request.applicationStatus)"
+          ></p-tag>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+<p-toast key="reactAdoption"></p-toast>

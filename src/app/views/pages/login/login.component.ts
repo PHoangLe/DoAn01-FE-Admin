@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginService } from '../../../serivces/login.service';
+import { LoginService } from '../../../services/login.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -20,6 +20,7 @@ export class LoginComponent {
     this.loginService.login(this.userEmail, this.userPassword).then(response => {
       console.log(response);
       if (response.userRoles.includes('ROLE_ADMIN')) {
+        sessionStorage.setItem("jwtToken", JSON.stringify(response.jwtToken));
         this.router.navigate(['/dashboard']);
       }
     })
