@@ -1,22 +1,22 @@
-<div class="content">
+<div class="content" *ngIf="listRequest.length > 0">
   <p-table
     [value]="listRequest"
     [paginator]="true"
     [rows]="5"
     selectionMode="single"
     [tableStyle]="{ 'min-width': '25rem' }"
-    stripedRows="true"
+    emptyMessage="Không yêu cầu"
   >
     <ng-template pTemplate="header">
       <tr>
-        <th style="min-width: 10%">Tên trại cứu trợ</th>
+        <th style="min-width: 10%" class="ps-4">Tên trại cứu trợ</th>
         <th style="min-width: 10%">Email</th>
         <th style="min-width: 50%">Địa chỉ</th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-request>
       <tr class="p-selectable-row" (click)="onRowSelect(request)">
-        <td>
+        <td class="ps-4">
           {{ request.shelterName }}
         </td>
         <td>
@@ -37,4 +37,5 @@
     </ng-template>
   </p-table>
 </div>
+<p *ngIf="listRequest.length <= 0">Hiện chưa có yêu cầu nào!</p>
 <p-toast key="reactAdoption"></p-toast>

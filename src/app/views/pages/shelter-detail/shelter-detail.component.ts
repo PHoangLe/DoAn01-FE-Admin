@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { ShelterService } from 'src/app/services/shelter.service';
 
@@ -12,11 +13,13 @@ export class ShelterDetailComponent {
   requestInfo: any;
   constructor(
     private messageService: MessageService,
-    private shelterService: ShelterService) {
+    private shelterService: ShelterService,
+    private router: Router) {
 
   }
   ngOnInit(): void {
     this.getPageData();
+
   }
 
   async getPageData() {
@@ -25,9 +28,17 @@ export class ShelterDetailComponent {
   }
 
   acceptRequest() {
-    this.shelterService.approveShelter(this.requestInfo.applicationID).then((response) => {
-      console.log(response)
+    this.shelterService.approveShelter(this.requestInfo.shelterID).then(() => {
       this.messageService.add({ key: "message", severity: 'success', detail: 'Chấp nhận yêu cầu' })
+      setTimeout(() => {
+        this.router.navigate(['/pasges/shelter-request']);
+      }, 1500);
+    })
+  }
+
+  rejectRequest() {
+    this.shelterService.diapproveShelter(this.requestInfo.shelterID).then(() => {
+      this.messageService.add({ key: "message", severity: 'error', detail: 'Từ chối yêu cầu' })
     })
   }
 
@@ -35,4 +46,9 @@ export class ShelterDetailComponent {
 
   }
 
+  urlToFileType(url: string): string {
+    console.log(url.slice(url.lastIndexOf('.') + 1, url.lastIndexOf('?')));
+
+    return url.slice(url.lastIndexOf('.') + 1, url.lastIndexOf('?'))
+  }
 }
