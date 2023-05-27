@@ -2,50 +2,51 @@
   background-color: #fff;
   border-radius: 20px;
   margin-bottom: 20px;
-  .info,
-  .user {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  .info {
+    display: block;
     gap: 20px;
   }
   .status-info,
   .basic-info {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
   }
-  .button-group {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+  .doc-container {
+    margin: 0;
+    width: fit-content;
+    box-sizing: border-box;
+    .doc-info {
+      margin: 0;
+      width: 100px;
+      height: 130px;
+
+      cursor: pointer;
+
+      .doc-icon {
+        border-radius: 10px;
+        background-color: #f3f1f1;
+        width: 100%;
+        height: calc(100% - 30px);
+        i {
+          font-size: 3rem;
+        }
+      }
+    }
+  }
+
+  .logo {
+    margin: 20px;
+    img {
+      max-width: 280px;
+    }
+  }
+  button {
+    margin-top: 20px;
   }
   h1 {
     font-weight: 500;
   }
   h5 {
     font-weight: 345;
-  }
-  .pet-img {
-    max-height: 400px;
-    margin: auto;
-    img {
-      object-fit: cover;
-      max-height: 400px;
-      min-height: 300px;
-      max-width: 500px;
-    }
-  }
-  .user {
-    .user-info {
-      background-color: #f5f5f5;
-      img {
-        width: 130px;
-        height: 130px;
-      }
-    }
-    .button {
-      display: grid;
-      margin: auto;
-      gap: 20px;
-    }
   }
 }

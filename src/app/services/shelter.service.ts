@@ -46,9 +46,14 @@ export class ShelterService {
 
   async approveShelter(shelterID: string) {
     let headers = this.getHttpHeader();
-    const response = await this.http.post(this.baseUrl + `/approveShelter`, {
-      shelterID: shelterID
-    }, { headers }).toPromise();
+    return await this.http.post(this.baseUrl + `/approveShelter/${shelterID}`
+      , { headers }).toPromise();
+  }
+
+  async diapproveShelter(shelterID: string) {
+    let headers = this.getHttpHeader();
+    return await this.http.post(this.baseUrl + `/disapproveShelter/${shelterID}`
+      , { headers }).toPromise();
   }
 
   convertToShelter(input: any): Shelter[] {
