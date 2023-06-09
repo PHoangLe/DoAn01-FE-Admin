@@ -9,7 +9,8 @@ import { Router } from '@angular/router';
 })
 export class AdoptionRequestComponent implements OnInit {
 
-  listRequest: any[]
+  listRequest: any[];
+  isLoading = true;
   constructor(
     private petAdopt: PetAdoptionService,
     private router: Router,
@@ -24,6 +25,7 @@ export class AdoptionRequestComponent implements OnInit {
       .catch(error => {
         console.log(error.error.message)
       })
+    this.isLoading = false
   }
 
   getSeverity(status: string) {

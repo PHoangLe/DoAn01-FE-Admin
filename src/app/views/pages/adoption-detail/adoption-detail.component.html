@@ -38,10 +38,16 @@
         </div>
       </p-divider>
 
-      <div class="ps-4" *ngFor="let user of requestInfo.animal.onlineAdaptors">
-        <p-avatar image="{{ user }}" size="large" shape="circle"></p-avatar>
+      <div class="ps-4" *ngFor="let user of requestInfo.animal.onlineAdopters">
+        <p-avatar
+          image="{{ user.userAvatar }}"
+          size="large"
+          shape="circle"
+          pTooltip="{{ user.userFirstName + ' ' + user.userLastName }}"
+          tooltipPosition="bottom"
+        ></p-avatar>
       </div>
-      <div class="ps-4 p-2" *ngIf="requestInfo.animal.onlineAdopters">
+      <div class="ps-4 p-2" *ngIf="!requestInfo.animal.onlineAdopters">
         Hiện tại chưa có người nhận nuôi
       </div>
     </div>

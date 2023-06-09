@@ -31,6 +31,7 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 import { TagModule } from 'primeng/tag';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ShelterDetailComponent } from './shelter-detail/shelter-detail.component';
+import { TooltipModule } from 'primeng/tooltip';
 
 
 
@@ -70,7 +71,8 @@ import { ShelterDetailComponent } from './shelter-detail/shelter-detail.componen
     MessageModule,
     MessagesModule,
     TagModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    TooltipModule
   ],
   providers: [MessageService]
 })
