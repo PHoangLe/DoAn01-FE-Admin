@@ -42,6 +42,27 @@ export class FundRequestComponent {
     }
   }
 
+  acceptRequest(fundRequestID) {
+    this.donationService.confirmFundRequest(fundRequestID).then(response => {
+      this.messageService.add({ key: 'reactFundRequest', severity: 'success', summary: 'Xác nhận thành công!' })
+    })
+      .catch((err) => {
+        this.messageService.add({ key: 'reactFundRequest', severity: 'error', summary: 'Có lỗi xảy ra!' })
+        console.log(err.error.message)
+      })
+
+  }
+
+  rejectRequest(fundRequestID) {
+    this.donationService.rejectFundRequest(fundRequestID).then(response => {
+      this.messageService.add({ key: 'reactFundRequest', severity: 'error', summary: 'Xác nhận thành công!' })
+    })
+      .catch((err) => {
+        this.messageService.add({ key: 'reactFundRequest', severity: 'error', summary: 'Có lỗi xảy ra!' })
+        console.log(err.error.message)
+      })
+  }
+
   onRowSelect(data) {
     console.log(data)
     // this.petAdopt.setStorageAdoption(data)

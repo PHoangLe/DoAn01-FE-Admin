@@ -27,14 +27,23 @@ export class DonationService {
 
   async confirmDonation(donationID: string) {
     let headers = this.getHttpHeader()
-    return await this.http.put(this.baseUrl + `donations/confirm/${donationID}`, { headers: headers }).toPromise();
+    return await this.http.get(this.baseUrl + `donations/confirm/${donationID}`, { headers: headers }).toPromise();
   }
 
   async rejectDonation(donationID: string) {
     let headers = this.getHttpHeader()
-    return await this.http.put(this.baseUrl + `donations/reject/${donationID}`, { headers: headers }).toPromise();
+    return await this.http.get(this.baseUrl + `donations/reject/${donationID}`, { headers: headers }).toPromise();
   }
 
+  async confirmFundRequest(fundID: string) {
+    let headers = this.getHttpHeader()
+    return await this.http.get(this.baseUrl + `funding-requests/confirm/${fundID}`, { headers: headers }).toPromise();
+  }
+
+  async rejectFundRequest(fundID: string) {
+    let headers = this.getHttpHeader()
+    return await this.http.get(this.baseUrl + `funding-requests/reject/${fundID}`, { headers: headers }).toPromise();
+  }
 
   getHttpHeader(): HttpHeaders {
     return new HttpHeaders({

@@ -25,7 +25,9 @@
     [tableStyle]="{ 'min-width': '25rem' }"
   >
     <ng-template pTemplate="caption">
-      <div class="search-bar w-100 d-flex justify-content-end">
+      <div class="search-bar w-100 d-flex justify-content-between">
+        <button class="btn btn-primary">Thêm mới</button>
+
         <span class="p-input-icon-right float-end">
           <i class="pi pi-search pe-2"></i>
           <input
@@ -44,7 +46,6 @@
         <th style="min-width: 10%" class="py-3 ps-4">Tên quỹ</th>
         <th style="min-width: 10%" class="py-3">Sô tiền mỗi gói</th>
         <th style="min-width: 10%" class="py-3">Khả dụng</th>
-        <th style="min-width: 10%" class="py-3 text-center">Trạng thái</th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-request>
@@ -57,18 +58,6 @@
         </td>
         <td>
           {{ request.fundBalance.toLocaleString() }}
-        </td>
-        <td class="d-flex justify-content-center border border-0">
-          <p-tag
-            [value]="
-              request.donationStatus === 'PENDING'
-                ? 'Đang chờ'
-                : request.donationStatus === 'COMPLETED'
-                ? 'Xác nhận'
-                : 'Từ chối'
-            "
-            [severity]="getSeverity(request.donationStatus)"
-          ></p-tag>
         </td>
       </tr>
     </ng-template>

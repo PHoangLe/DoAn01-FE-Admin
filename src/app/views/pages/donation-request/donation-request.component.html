@@ -11,7 +11,13 @@
   <p-table
     #dt
     dataKey="id"
-    [globalFilterFields]="['user.userEmail', 'fund.fundName', 'date']"
+    [globalFilterFields]="[
+      'user.userFirstName',
+      'user.userLastName',
+      'fund.fundName',
+      'date',
+      'user.userEmail'
+    ]"
     [value]="listRequest"
     [paginator]="true"
     [rows]="5"
@@ -37,8 +43,9 @@
     <ng-template pTemplate="header">
       <tr>
         <th style="min-width: 10%" class="py-3 ps-4">Tên quỹ</th>
-        <th style="min-width: 10%" class="py-3">Tên trại</th>
-        <th style="min-width: 10%" class="py-3">Ngày gửi yêu cầu</th>
+        <th style="min-width: 10%" class="py-3">Email</th>
+        <th style="min-width: 10%" class="py-3">Số tiền</th>
+        <th style="min-width: 10%" class="py-3">Ngày gửi</th>
         <th style="min-width: 10%" class="py-3 text-center">Trạng thái</th>
         <th style="min-width: 10%" class="py-3 text-center">Tuỳ chọn</th>
       </tr>
@@ -49,10 +56,17 @@
           {{ request.fund.fundName }}
         </td>
         <td>
-          {{ request.user.userFirstName + " " + request.user.userLastName }}
+          {{ request.user.userEmail }}
         </td>
         <td>
-          {{ request.date | date : "dd/MM/yyyy" }}
+          {{
+            (
+              request.numsOfPackage * request.fund.valuePerDonationPackage
+            ).toLocaleString()
+          }}
+        </td>
+        <td>
+          {{ request.date ? (request.date | date : "dd/MM/yyyy") : "Chưa rõ" }}
         </td>
         <td class="d-flex justify-content-center border border-0">
           <p-tag
@@ -85,4 +99,4 @@
     </ng-template>
   </p-table>
 </div>
-<p-toast key="reactAdoption"></p-toast>
+<p-toast key="reactDonation"></p-toast>

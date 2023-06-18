@@ -43,8 +43,10 @@
       <tr>
         <th style="min-width: 10%" class="py-3 ps-4">Tên quỹ</th>
         <th style="min-width: 10%" class="py-3">Tên trại</th>
-        <th style="min-width: 10%" class="py-3">Ngày gửi yêu cầu</th>
+        <th style="min-width: 10%" class="py-3">Ngày gửi</th>
+        <th style="min-width: 20%" class="py-3">Lý do</th>
         <th style="min-width: 10%" class="py-3 text-center">Trạng thái</th>
+        <th style="min-width: 10%" class="py-3 text-center">Tuỳ chọn</th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-request>
@@ -56,7 +58,10 @@
           {{ request.shelter.shelterName }}
         </td>
         <td>
-          {{ request.date | date : "dd/MM/yyyy" }}
+          {{ request.date ? (request.date | date : "dd/MM/yyyy") : "Chưa rõ" }}
+        </td>
+        <td>
+          {{ request.reason }}
         </td>
         <td class="d-flex justify-content-center border border-0">
           <p-tag
@@ -70,8 +75,22 @@
             [severity]="getSeverity(request.requestStatus)"
           ></p-tag>
         </td>
+        <td class="border border-0 text-center">
+          <p-button
+            *ngIf="request.requestStatus === 'PENDING'"
+            (onClick)="acceptRequest(request.requestID)"
+            icon="pi pi-check"
+            styleClass="p-button-rounded p-button-text"
+          ></p-button>
+          <p-button
+            *ngIf="request.requestStatus === 'PENDING'"
+            (onClick)="rejectRequest(request.requestID)"
+            icon="pi pi-times"
+            styleClass="p-button-rounded p-button-danger p-button-text"
+          ></p-button>
+        </td>
       </tr>
     </ng-template>
   </p-table>
 </div>
-<p-toast key="reactAdoption"></p-toast>
+<p-toast key="reactFundRequest"></p-toast>
