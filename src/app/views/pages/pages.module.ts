@@ -32,6 +32,9 @@ import { TagModule } from 'primeng/tag';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ShelterDetailComponent } from './shelter-detail/shelter-detail.component';
 import { TooltipModule } from 'primeng/tooltip';
+import { DonationComponent } from './donation/donation.component';
+import { FundRequestComponent } from './fund-request/fund-request.component';
+import { DonationRequestComponent } from './donation-request/donation-request.component';
 
 
 
@@ -44,7 +47,10 @@ import { TooltipModule } from 'primeng/tooltip';
     ShelterRequestComponent,
     AdoptionDetailComponent,
     AdoptionRequestComponent,
-    ShelterDetailComponent
+    ShelterDetailComponent,
+    DonationComponent,
+    FundRequestComponent,
+    DonationRequestComponent
 
   ],
   imports: [

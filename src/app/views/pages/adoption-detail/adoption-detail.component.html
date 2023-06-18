@@ -1,5 +1,5 @@
 <div class="container p-4">
-  <div class="info pt-4">
+  <div class="info pt-4 px-4">
     <div class="pet-info my-auto">
       <h1 class="ps-4">{{ requestInfo.animal.animalName }}</h1>
       <div class="basic-info ps-4">
@@ -32,13 +32,16 @@
           <b>Thân thiện:</b> {{ requestInfo.animal.friendly ? "Có" : "Không" }}
         </h5>
       </div>
-      <p-divider align="left" class="pt-2">
+      <p-divider align="left" class="pt-2 mb-2">
         <div class="inline-flex align-items-center">
           <b>Người nhận nuôi online</b>
         </div>
       </p-divider>
 
-      <div class="ps-4" *ngFor="let user of requestInfo.animal.onlineAdopters">
+      <div
+        class="ps-4 pt-2"
+        *ngFor="let user of requestInfo.animal.onlineAdopters"
+      >
         <p-avatar
           image="{{ user.userAvatar }}"
           size="large"

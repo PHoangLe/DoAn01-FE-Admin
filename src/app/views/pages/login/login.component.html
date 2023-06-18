@@ -18,7 +18,8 @@
                   [(ngModel)]="userEmail"
                 />
               </c-input-group>
-              <c-input-group class="mb-4">
+
+              <c-input-group class="mb-3">
                 <span cInputGroupText>
                   <svg cIcon name="cilLockLocked"></svg>
                 </span>
@@ -30,6 +31,19 @@
                   [(ngModel)]="userPassword"
                 />
               </c-input-group>
+              <div
+                class="mb-2 text-center"
+                *ngIf="
+                  (loginForm.get('userPassword').invalid &&
+                    (loginForm.get('userPassword').dirty ||
+                      loginForm.get('userPassword').touched)) ||
+                  isWrongLogin
+                "
+              >
+                <small class="text-danger" *ngIf="isWrongLogin"
+                  >Email hoặc mật khẩu chưa đúng</small
+                >
+              </div>
               <c-row class="d-flex justify-content-center">
                 <button
                   cButton

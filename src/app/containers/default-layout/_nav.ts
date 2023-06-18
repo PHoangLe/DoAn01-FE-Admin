@@ -17,4 +17,23 @@ export const navItems: INavData[] = [
     url: 'pages/shelter-request',
     iconComponent: { name: 'cil-chart-pie' }
   },
+  {
+    name: 'Quỹ cứu trợ',
+    iconComponent: { name: 'cil-chart-pie' },
+    children: [
+      {
+        name: 'Quản lý quỹ',
+        url: 'pages/donation',
+      },
+      {
+        name: 'Danh sách ủng hộ',
+        url: 'pages/donation-request',
+      },
+      {
+        name: 'Yêu cầu hỗ trợ',
+        url: 'pages/fund-request',
+      }
+    ]
+
+  }
 ];

@@ -1,0 +1,88 @@
+:host::ng-deep {
+  .search-bar {
+    justify-content: space-between;
+    input {
+      background-color: rgb(228, 230, 235);
+      border: none;
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+  p-tag > span {
+    padding: 5px 10px;
+    border-radius: 10px;
+  }
+  .p-datatable {
+    padding: 20px;
+    width: 100%;
+    .p-datatable-header {
+      border: none;
+      border-radius: 15px;
+      background-color: #fff;
+    }
+
+    .p-sortable-column,
+    .p-datatable-thead > tr > th {
+      border: none;
+    }
+
+    .p-datatable-thead {
+      border: none;
+      tr {
+        th:first-child {
+          border-top-left-radius: 20px;
+        }
+        th:last-child {
+          border-top-right-radius: 20px;
+        }
+      }
+    }
+
+    .p-datatable-tbody {
+      border-radius: 15px;
+      tr > td {
+        border: none;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      tr > td > p-tag > span {
+        width: 80px;
+      }
+    }
+
+    .p-datatable-tfoot {
+      width: 100%;
+    }
+  }
+  p-table {
+    display: flex;
+    justify-content: center;
+    table-layout: auto;
+  }
+
+  .p-paginator-pages {
+    .p-paginator-page {
+      height: 2rem;
+      min-width: 2rem;
+      border-radius: 5px;
+    }
+    .p-paginator-page.p-highlight {
+      background-color: #7a3d26;
+    }
+  }
+
+  .p-paginator-bottom {
+    border-radius: 0 0 20px 20px;
+    padding: 20px 0px 10px 0;
+    border: none;
+  }
+}
+
+.content {
+  min-height: 79vh;
+}
+.p-selectable-row {
+  cursor: pointer;
+}

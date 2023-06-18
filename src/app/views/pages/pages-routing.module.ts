@@ -7,6 +7,9 @@ import { ShelterRequestComponent } from './shelter-request/shelter-request.compo
 import { AdoptionRequestComponent } from './request-list/adoption-request.component'
 import { AdoptionDetailComponent } from './adoption-detail/adoption-detail.component'
 import { ShelterDetailComponent } from './shelter-detail/shelter-detail.component';
+import { DonationComponent } from './donation/donation.component';
+import { DonationRequestComponent } from './donation-request/donation-request.component';
+import { FundRequestComponent } from './fund-request/fund-request.component';
 
 
 const routes: Routes = [
@@ -58,6 +61,27 @@ const routes: Routes = [
     component: ShelterDetailComponent,
     data: {
       title: 'Thông tin chi tiết'
+    }
+  },
+  {
+    path: 'donation',
+    component: DonationComponent,
+    data: {
+      title: 'Quản lý quỹ'
+    }
+  },
+  {
+    path: 'donation-request',
+    component: DonationRequestComponent,
+    data: {
+      title: 'Danh sách ủng hộ'
+    }
+  },
+  {
+    path: 'fund-request',
+    component: FundRequestComponent,
+    data: {
+      title: 'Yêu cầu hỗ trợ'
     }
   }
 ];
