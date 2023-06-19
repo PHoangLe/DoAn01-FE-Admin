@@ -11,10 +11,10 @@
   <p-table
     #dt
     dataKey="id"
-    [globalFilterFields]="['user.userEmail', 'fund.fundName', 'date']"
+    [globalFilterFields]="['user.userFirstName', 'user.userLastName', 'fund.fundName', 'date', 'donationStatus']"
     [value]="listRequest"
     [paginator]="true"
-    [rows]="5"
+    [rows]="10"
     styleClass="p-datatable-striped"
     selectionMode="single"
     [tableStyle]="{ 'min-width': '25rem' }"
@@ -36,10 +36,10 @@
     </ng-template>
     <ng-template pTemplate="header">
       <tr>
-        <th style="min-width: 10%" class="py-3 ps-4">Tên quỹ</th>
-        <th style="min-width: 10%" class="py-3">Tên trại</th>
-        <th style="min-width: 10%" class="py-3">Ngày gửi yêu cầu</th>
-        <th style="min-width: 10%" class="py-3 text-center">Trạng thái</th>
+        <th style="min-width: 10%" class="py-3 ps-4">Tên quỹ </th>
+        <th style="min-width: 10%" class="py-3">Tên người gửi </th>
+        <th pSortableColumn="date" style="min-width: 10%" class="py-3">Ngày gửi yêu cầu <p-sortIcon field="date"></p-sortIcon></th>
+        <th pSortableColumn="donationStatus" style="min-width: 10%" class="py-3 text-center">Trạng thái <p-sortIcon field="donationStatus"></p-sortIcon></th>
         <th style="min-width: 10%" class="py-3 text-center">Tuỳ chọn</th>
       </tr>
     </ng-template>
