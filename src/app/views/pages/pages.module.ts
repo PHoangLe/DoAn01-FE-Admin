@@ -22,7 +22,6 @@ import { BreadcrumbModule } from 'primeng/breadcrumb';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { TableModule } from 'primeng/table';
 import { GalleriaModule } from 'primeng/galleria';
-import { InputTextareaModule } from 'primeng/inputtextarea';
 import { AvatarModule } from 'primeng/avatar';
 import { ToastModule } from 'primeng/toast';
 import { MessagesModule } from 'primeng/messages';
@@ -35,6 +34,15 @@ import { TooltipModule } from 'primeng/tooltip';
 import { DonationComponent } from './donation/donation.component';
 import { FundRequestComponent } from './fund-request/fund-request.component';
 import { DonationRequestComponent } from './donation-request/donation-request.component';
+import { FundCardComponent } from './fund-card/fund-card.component';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+
+import { environment } from 'src/environments/environment'
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+
 
 
 
@@ -50,8 +58,8 @@ import { DonationRequestComponent } from './donation-request/donation-request.co
     ShelterDetailComponent,
     DonationComponent,
     FundRequestComponent,
-    DonationRequestComponent
-
+    DonationRequestComponent,
+    FundCardComponent
   ],
   imports: [
     CommonModule,
@@ -78,9 +86,14 @@ import { DonationRequestComponent } from './donation-request/donation-request.co
     MessagesModule,
     TagModule,
     ConfirmDialogModule,
-    TooltipModule
+    TooltipModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireDatabaseModule,
+    AngularFireStorageModule,
   ],
-  providers: [MessageService]
+  providers: [MessageService, ConfirmationService]
+
 })
-export class PagesModule {
-}
+export class PagesModule { }
+
+
