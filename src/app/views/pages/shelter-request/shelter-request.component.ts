@@ -9,6 +9,7 @@ import { ShelterService } from 'src/app/services/shelter.service';
 })
 export class ShelterRequestComponent implements OnInit {
   listRequest: any
+  isLoading = true;
   constructor(
     private shelterService: ShelterService,
     private router: Router,
@@ -24,6 +25,7 @@ export class ShelterRequestComponent implements OnInit {
       .catch(error => {
         console.log(error.error.message)
       })
+    this.isLoading = false;
   }
 
   getSeverity(status: string) {

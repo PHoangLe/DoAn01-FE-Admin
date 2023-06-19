@@ -1,4 +1,14 @@
 :host::ng-deep {
+  .search-bar {
+    justify-content: space-between;
+    input {
+      background-color: rgb(228, 230, 235);
+      border: none;
+      &:focus {
+        outline: none;
+      }
+    }
+  }
   p-tag > span {
     padding: 5px 10px;
     border-radius: 10px;

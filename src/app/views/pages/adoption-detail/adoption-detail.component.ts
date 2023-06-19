@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MenuItem, MessageService } from 'primeng/api';
 import { PetAdoptionService } from 'src/app/services/pet-adoption.service';
 
@@ -12,7 +12,8 @@ export class AdoptionDetailComponent implements OnInit {
   requestInfo: any;
   constructor(
     private messageService: MessageService,
-    private petAdoptionService: PetAdoptionService) {
+    private petAdoptionService: PetAdoptionService,
+    private router: Router) {
 
   }
   ngOnInit(): void {
@@ -26,15 +27,19 @@ export class AdoptionDetailComponent implements OnInit {
 
   acceptRequest() {
     this.petAdoptionService.acceptOnlineAdoption(this.requestInfo.applicationID).then((response) => {
-      console.log(response)
       this.messageService.add({ key: "message", severity: 'success', detail: 'Chấp nhận yêu cầu' })
+      setTimeout(() => {
+        this.router.navigate(['/adoption-request'])
+      }, 2000);
     })
   }
 
   rejectRequest() {
     this.petAdoptionService.declineOnlineAdoption(this.requestInfo.applicationID).then((response) => {
-      console.log(response)
       this.messageService.add({ key: "message", severity: 'warning', detail: 'Từ chối yêu cầu' })
+      setTimeout(() => {
+        this.router.navigate(['/adoption-request'])
+      }, 2000);
     })
   }
 

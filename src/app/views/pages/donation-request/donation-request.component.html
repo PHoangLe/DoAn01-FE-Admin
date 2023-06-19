@@ -1,0 +1,88 @@
+<div class="content position-relative h-100">
+  <div
+    *ngIf="isLoading"
+    class="loading w-100 h-100 position-absolute d-flex d-flex justify-content-center align-items-center flex-column gap-2 bg-body rounded-3 z-3"
+  >
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Đang tải...</span>
+    </div>
+    <p style="opacity: 0.7">Đang tải</p>
+  </div>
+  <p-table
+    #dt
+    dataKey="id"
+    [globalFilterFields]="['user.userFirstName', 'user.userLastName', 'fund.fundName', 'date', 'donationStatus']"
+    [value]="listRequest"
+    [paginator]="true"
+    [rows]="10"
+    styleClass="p-datatable-striped"
+    selectionMode="single"
+    [tableStyle]="{ 'min-width': '25rem' }"
+  >
+    <ng-template pTemplate="caption">
+      <div class="search-bar w-100 d-flex justify-content-end">
+        <span class="p-input-icon-right float-end">
+          <i class="pi pi-search pe-2"></i>
+          <input
+            pInputText
+            class="ps-3 pe-4 py-2 rounded-4"
+            type="text"
+            #textInput
+            (input)="dt.filterGlobal(textInput.value, 'contains')"
+            placeholder="Nhập thông tin"
+          />
+        </span>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="min-width: 10%" class="py-3 ps-4">Tên quỹ </th>
+        <th style="min-width: 10%" class="py-3">Tên người gửi </th>
+        <th pSortableColumn="date" style="min-width: 10%" class="py-3">Ngày gửi yêu cầu <p-sortIcon field="date"></p-sortIcon></th>
+        <th pSortableColumn="donationStatus" style="min-width: 10%" class="py-3 text-center">Trạng thái <p-sortIcon field="donationStatus"></p-sortIcon></th>
+        <th style="min-width: 10%" class="py-3 text-center">Tuỳ chọn</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-request>
+      <tr class="p-selectable-row" (click)="onRowSelect(request)">
+        <td class="ps-4">
+          {{ request.fund.fundName }}
+        </td>
+        <td>
+          {{ request.user.userFirstName + " " + request.user.userLastName }}
+        </td>
+        <td>
+          {{ request.date | date : "dd/MM/yyyy" }}
+        </td>
+        <td class="d-flex justify-content-center border border-0">
+          <p-tag
+            [value]="
+              request.donationStatus === 'PENDING'
+                ? 'Đang chờ'
+                : request.donationStatus === 'COMPLETED'
+                ? 'Xác nhận'
+                : 'Từ chối'
+            "
+            [severity]="getSeverity(request.donationStatus)"
+          ></p-tag>
+        </td>
+
+        <td class="border border-0 text-center">
+          <p-button
+            *ngIf="request.donationStatus === 'PENDING'"
+            icon="pi pi-check"
+            (onClick)="acceptDonation(request.donationID)"
+            styleClass="p-button-rounded p-button-text"
+          ></p-button>
+          <p-button
+            *ngIf="request.donationStatus === 'PENDING'"
+            icon="pi pi-times"
+            (onClick)="rejectDonation(request.donationID)"
+            styleClass="p-button-rounded p-button-danger p-button-text"
+          ></p-button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+<p-toast key="reactAdoption"></p-toast>

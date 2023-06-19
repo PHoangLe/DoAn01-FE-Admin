@@ -58,4 +58,25 @@ $enable-rtl: true;
       background-color: transparent;
     }
   }
+  .p-toast .p-toast-message {
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    min-width: fit-content;
+
+    .p-toast-message-content {
+      padding: 1rem;
+      .p-toast-message-success {
+        background-color: rgb(234, 247, 238);
+      }
+      .p-toast-message-alert {
+        background-color: rgb(254, 247, 234);
+      }
+      .p-toast-message-info {
+        background-color: rgb(229, 239, 250);
+      }
+      .p-toast-message-danger {
+        background-color: rgb(252, 237, 233);
+      }
+    }
+  }
 }

@@ -39,6 +39,9 @@ export class ShelterDetailComponent {
   rejectRequest() {
     this.shelterService.diapproveShelter(this.requestInfo.shelterID).then(() => {
       this.messageService.add({ key: "message", severity: 'error', detail: 'Từ chối yêu cầu' })
+      setTimeout(() => {
+        this.router.navigate(['/pasges/shelter-request']);
+      }, 1500);
     })
   }
 
