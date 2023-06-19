@@ -9,7 +9,7 @@ import { ShelterService } from './shelter.service';
 })
 export class PetAdoptionService {
 
-  private baseUrl = "https://doan01-be-production.up.railway.app/api/v1/adopt";
+  private baseUrl = "http://localhost:8080/api/v1/adopt";
   constructor(
     private http: HttpClient,
     private petService: PetService,
