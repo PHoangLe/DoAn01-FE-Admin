@@ -22,7 +22,6 @@ export class DonationRequestComponent {
   }
   async getFundsRequest() {
     await this.donationService.getAllDonations().then(request => {
-      console.log(request)
       this.listRequest = request;
     })
       .catch(error => {
@@ -45,6 +44,8 @@ export class DonationRequestComponent {
   acceptDonation(donationID) {
     this.donationService.confirmDonation(donationID).then(response => {
       this.messageService.add({ key: 'reactDonation', severity: 'success', summary: 'Xác nhận thành công!' })
+      let donation = this.listRequest.find(donation => donation.donationID === donationID)
+      donation.donationStatus = 'COMPLETED'
     })
       .catch((err) => {
         this.messageService.add({ key: 'reactDonation', severity: 'error', summary: 'Có lỗi xảy ra!' })

@@ -13,7 +13,7 @@
     [value]="listRequest"
     [paginator]="true"
     dataKey="id"
-    [rows]="5"
+    [rows]="10"
     styleClass="p-datatable-striped"
     [globalFilterFields]="[
       'fundName',
@@ -26,7 +26,7 @@
   >
     <ng-template pTemplate="caption">
       <div class="search-bar w-100 d-flex justify-content-between">
-        <button class="btn btn-primary">Thêm mới</button>
+        <button class="btn btn-primary" (click)="addNewFund()">Thêm mới</button>
 
         <span class="p-input-icon-right float-end">
           <i class="pi pi-search pe-2"></i>

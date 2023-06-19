@@ -22,7 +22,6 @@ export class FundRequestComponent {
   }
   async getFundsRequest() {
     await this.donationService.getAllFundRequest().then(request => {
-      console.log(request)
       this.listRequest = request;
     })
       .catch(error => {
@@ -45,9 +44,11 @@ export class FundRequestComponent {
   acceptRequest(fundRequestID) {
     this.donationService.confirmFundRequest(fundRequestID).then(response => {
       this.messageService.add({ key: 'reactFundRequest', severity: 'success', summary: 'Xác nhận thành công!' })
+      let fundRequest = this.listRequest.find(fundReq => fundReq.requestID === fundRequestID)
+      fundRequest.requestStatus = 'COMPLETED'
     })
       .catch((err) => {
-        this.messageService.add({ key: 'reactFundRequest', severity: 'error', summary: 'Có lỗi xảy ra!' })
+        this.messageService.add({ key: 'reactFundRequest', severity: 'error', summary: err.error.message ? err.error.message : 'Có lỗi xảy ra!' })
         console.log(err.error.message)
       })
 
@@ -58,7 +59,7 @@ export class FundRequestComponent {
       this.messageService.add({ key: 'reactFundRequest', severity: 'error', summary: 'Xác nhận thành công!' })
     })
       .catch((err) => {
-        this.messageService.add({ key: 'reactFundRequest', severity: 'error', summary: 'Có lỗi xảy ra!' })
+        this.messageService.add({ key: 'reactFundRequest', severity: 'error', summary: err.error.message })
         console.log(err.error.message)
       })
   }
