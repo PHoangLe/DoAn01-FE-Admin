@@ -91,7 +91,10 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
     AngularFireDatabaseModule,
     AngularFireStorageModule,
   ],
-  providers: [MessageService, ConfirmationService]
+  providers: [
+    MessageService, 
+    ConfirmationService,
+    ]
 
 })
 export class PagesModule { }
