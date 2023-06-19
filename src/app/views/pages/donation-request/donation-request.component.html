@@ -49,10 +49,17 @@
           {{ request.fund.fundName }}
         </td>
         <td>
-          {{ request.user.userFirstName + " " + request.user.userLastName }}
+          {{ request.user.userEmail }}
         </td>
         <td>
-          {{ request.date | date : "dd/MM/yyyy" }}
+          {{
+            (
+              request.numsOfPackage * request.fund.valuePerDonationPackage
+            ).toLocaleString()
+          }}
+        </td>
+        <td>
+          {{ request.date ? (request.date | date : "dd/MM/yyyy") : "Chưa rõ" }}
         </td>
         <td class="d-flex justify-content-center border border-0">
           <p-tag
@@ -85,4 +92,4 @@
     </ng-template>
   </p-table>
 </div>
-<p-toast key="reactAdoption"></p-toast>
+<p-toast key="reactDonation"></p-toast>

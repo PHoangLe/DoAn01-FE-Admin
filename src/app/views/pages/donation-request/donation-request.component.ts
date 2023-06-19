@@ -22,7 +22,6 @@ export class DonationRequestComponent {
   }
   async getFundsRequest() {
     await this.donationService.getAllDonations().then(request => {
-      console.log(request)
       this.listRequest = request;
     })
       .catch(error => {
@@ -44,10 +43,12 @@ export class DonationRequestComponent {
 
   acceptDonation(donationID) {
     this.donationService.confirmDonation(donationID).then(response => {
-      this.messageService.add({ key: 'reactAdoption', severity: 'success', summary: response.toString() })
+      this.messageService.add({ key: 'reactDonation', severity: 'success', summary: 'Xác nhận thành công!' })
+      let donation = this.listRequest.find(donation => donation.donationID === donationID)
+      donation.donationStatus = 'COMPLETED'
     })
       .catch((err) => {
-        this.messageService.add({ key: 'reactAdoption', severity: 'error', summary: 'Có lỗi xảy ra!' })
+        this.messageService.add({ key: 'reactDonation', severity: 'error', summary: 'Có lỗi xảy ra!' })
         console.log(err.error.message)
       })
 
@@ -55,10 +56,10 @@ export class DonationRequestComponent {
 
   rejectDonation(donationID) {
     this.donationService.rejectDonation(donationID).then(response => {
-      this.messageService.add({ key: 'reactAdoption', severity: 'error', summary: response.toString() })
+      this.messageService.add({ key: 'reactDonation', severity: 'error', summary: 'Xác nhận thành công!' })
     })
       .catch((err) => {
-        this.messageService.add({ key: 'reactAdoption', severity: 'error', summary: 'Có lỗi xảy ra!' })
+        this.messageService.add({ key: 'reactDonation', severity: 'error', summary: 'Có lỗi xảy ra!' })
         console.log(err.error.message)
       })
   }

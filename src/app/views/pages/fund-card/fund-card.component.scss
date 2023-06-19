@@ -1,0 +1,36 @@
+.container {
+  span:first-child {
+    background-color: #bababa;
+    width: fit-content;
+  }
+  input[type="file"] {
+    display: none;
+  }
+
+  .custom-file-upload {
+    height: 180px;
+    width: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    cursor: pointer;
+    img {
+      height: 180px;
+      width: 180px;
+      object-fit: fill;
+    }
+  }
+  input {
+    border: none;
+    &:focus {
+      outline: none;
+    }
+  }
+  #textarea {
+    border: solid 2px;
+    &:focus {
+      box-shadow: none;
+    }
+  }
+}

@@ -8,6 +8,10 @@
         outline: none;
       }
     }
+    button {
+      width: fit-content;
+      padding: 0 1rem;
+    }
   }
   p-tag > span {
     padding: 5px 10px;

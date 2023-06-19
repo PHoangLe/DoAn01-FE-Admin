@@ -5,6 +5,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { FIREBASE_OPTIONS } from '@angular/fire/compat';
+import { environment } from 'src/environments/environment'
 
 import {
   PERFECT_SCROLLBAR_CONFIG,
@@ -100,7 +102,8 @@ const APP_CONTAINERS = [
       useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG,
     },
     IconSetService,
-    Title
+    Title,
+    { provide: FIREBASE_OPTIONS, useValue: environment.firebaseConfig }
   ],
   bootstrap: [AppComponent],
 })

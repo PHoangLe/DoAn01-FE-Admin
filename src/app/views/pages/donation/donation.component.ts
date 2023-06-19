@@ -1,19 +1,30 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { DonationService } from 'src/app/services/donation.service';
+import { FundCardComponent } from '../fund-card/fund-card.component';
 
 @Component({
   selector: 'app-donation',
   templateUrl: './donation.component.html',
-  styleUrls: ['./donation.component.scss']
+  styleUrls: ['./donation.component.scss'],
+  providers: [DialogService, MessageService]
+
 })
-export class DonationComponent {
+export class DonationComponent implements OnInit, OnDestroy {
   listRequest: any;
   isLoading = true;
+  ref: DynamicDialogRef;
+
   constructor(
     private donationService: DonationService,
+    public dialogService: DialogService,
     private router: Router,
   ) { }
+  ngOnDestroy(): void {
+    throw new Error('Method not implemented.');
+  }
   ngOnInit(): void {
     this.getFundsRequest();
   }
@@ -39,9 +50,23 @@ export class DonationComponent {
     }
   }
 
+  addNewFund() {
+    this.ref = this.dialogService.open(FundCardComponent, {
+      width: '50%',
+      contentStyle: { overflow: 'auto' },
+      baseZIndex: 10000,
+      maximizable: true
+    })
+
+  }
   onRowSelect(data) {
     console.log(data)
-    // this.petAdopt.setStorageAdoption(data)
-    // this.router.navigate([`pages/adoption-detail/${data.applicationID}`])
+    this.ref = this.dialogService.open(FundCardComponent, {
+      data: data,
+      width: '50%',
+      contentStyle: { overflow: 'auto' },
+      baseZIndex: 10000,
+      maximizable: true
+    })
   }
 }
