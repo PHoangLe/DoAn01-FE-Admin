@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Fund } from '../model/Fund';
 
 @Injectable({
   providedIn: 'root'
@@ -49,26 +50,50 @@ export class DonationService {
   async addNewFund(fund) {
     let headers = this.getHttpHeader()
     console.log(fund);
-    // return await this.http.post(this.baseUrl + 'funds', {
-    //   fundName: '',
-    //   fundCover: '',
-    //   fundDescription: '',
-    //   valuePerDonationPackage: '',
-    //   fundType: ''
-    // }, { headers: headers }).toPromise();
+    return await this.http.post(this.baseUrl + 'funds', {
+      fundName: fund.fundName,
+      fundCover: fund.fundCover,
+      fundDescription: fund.fundDescription,
+      valuePerDonationPackage: fund.valuePerDonationPackage,
+      fundType: fund.fundType
+    }, { headers: headers }).toPromise();
   }
 
 
-  async updateFund(fund) {
+  async updateFund(fund: Fund) {
     let headers = this.getHttpHeader()
-    console.log(fund);
+    console.log(fund.fundName);
+    console.log(fund.fundCover);
+    console.log(fund.fundDescription);
+    console.log(fund.valuePerDonationPackage);
+    console.log(fund.fundType);
+    console.log(fund.fundBalance);
+
     return await this.http.put(this.baseUrl + `funds/${fund.fundID}`, {
-      fundName: '',
-      fundCover: '',
-      fundDescription: '',
-      valuePerDonationPackage: '',
-      fundType: ''
+      fundName: fund.fundName,
+      fundCover: fund.fundCover,
+      fundDescription: fund.fundDescription,
+      valuePerDonationPackage: fund.valuePerDonationPackage,
+      fundType: fund.fundType,
+      fundBalance: fund.fundBalance
     }, { headers: headers }).toPromise();
+  }
+
+  convertToFundType(input: any) {
+    var fundList = new Array<Fund>
+    input.forEach(item => {
+      const fund = new Fund(
+        item.fundID,
+        item.fundName,
+        item.fundCover,
+        item.fundDescription,
+        item.valuePerDonationPackage,
+        item.fundType,
+        item.fundBalance
+      )
+      fundList.push(fund)
+    });
+    return fundList
   }
 
   getHttpHeader(): HttpHeaders {

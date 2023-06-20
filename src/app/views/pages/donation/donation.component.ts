@@ -4,6 +4,7 @@ import { MessageService } from 'primeng/api';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { DonationService } from 'src/app/services/donation.service';
 import { FundCardComponent } from '../fund-card/fund-card.component';
+import { Fund } from 'src/app/model/Fund';
 
 @Component({
   selector: 'app-donation',
@@ -13,7 +14,7 @@ import { FundCardComponent } from '../fund-card/fund-card.component';
 
 })
 export class DonationComponent implements OnInit, OnDestroy {
-  listRequest: any;
+  fundList: Fund[];
   isLoading = true;
   ref: DynamicDialogRef;
 
@@ -29,9 +30,10 @@ export class DonationComponent implements OnInit, OnDestroy {
     this.getFundsRequest();
   }
   async getFundsRequest() {
-    await this.donationService.getAllFunds().then(request => {
-      console.log(request)
-      this.listRequest = request;
+    await this.donationService.getAllFunds().then(fundRes => {
+      console.log(fundRes)
+      this.fundList = this.donationService.convertToFundType(fundRes);
+      console.log(this.fundList)
     })
       .catch(error => {
         console.log(error.error.message)
@@ -52,6 +54,7 @@ export class DonationComponent implements OnInit, OnDestroy {
 
   addNewFund() {
     this.ref = this.dialogService.open(FundCardComponent, {
+      data: "",
       width: '50%',
       contentStyle: { overflow: 'auto' },
       baseZIndex: 10000,

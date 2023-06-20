@@ -10,18 +10,11 @@
         (change)="selectedAvatar($event)"
       />
       <img
-        *ngIf="!fund"
-        src="https://firebasestorage.googleapis.com/v0/b/advance-totem-350103.appspot.com/o/Avatar%2Fimage-holder-icon.png?alt=media&token=2bc0bac5-ea17-4dd9-8c9e-4813316da679
-        "
-        id="imgInput"
-        class="w-100 rounded-3"
-      />
-
-      <img
-        *ngIf="fund"
         src="{{
-          fund.fundCover
+          fund
             ? fund.fundCover
+              ? fund.fundCover
+              : 'https://firebasestorage.googleapis.com/v0/b/advance-totem-350103.appspot.com/o/Avatar%2Fimage-holder-icon.png?alt=media&token=2bc0bac5-ea17-4dd9-8c9e-4813316da679'
             : 'https://firebasestorage.googleapis.com/v0/b/advance-totem-350103.appspot.com/o/Avatar%2Fimage-holder-icon.png?alt=media&token=2bc0bac5-ea17-4dd9-8c9e-4813316da679'
         }}"
         id="imgInput"
@@ -37,13 +30,22 @@
       type="text"
     />
   </span>
+
   <span class="p-float-label my-2">
     <h6 class="addressLabel ps-0">Loại quỹ</h6>
-    <input
-      class="inputtext px-2 py-1 w-100 rounded-2 border border-1"
-      [(ngModel)]="fund.fundType"
-      type="text"
-    />
+    <select
+      class="form-select"
+      aria-label="Chọn loại quỹ"
+      [(ngModel)]="selectedFundType"
+    >
+      <option
+        *ngFor="let fundType of listFundTypes"
+        [ngValue]="fundType"
+        [selected]="fundType.id === selectedFundType.id"
+      >
+        {{ fundType.value }}
+      </option>
+    </select>
   </span>
   <span class="p-float-label my-2">
     <h6 class="addressLabel ps-0">Số tiền mỗi gói</h6>
@@ -64,11 +66,22 @@
     ></textarea>
   </span>
   <div class="button-group d-flex justify-content-center mt-4">
-    <button type="submit" class="btn btn-primary text-nowrap" *ngIf="!fund">
+    <button
+      type="submit"
+      class="btn btn-primary text-nowrap"
+      *ngIf="!fund.fundID"
+      (click)="addNewFund()"
+    >
       Thêm
     </button>
-    <button type="submit" class="btn btn-primary text-nowrap" *ngIf="fund">
+    <button
+      type="submit"
+      class="btn btn-primary text-nowrap"
+      *ngIf="fund.fundID"
+      (click)="updateFund()"
+    >
       Cập nhật
     </button>
   </div>
+  <p-toast key="fund" [preventOpenDuplicates]="true"></p-toast>
 </div>
