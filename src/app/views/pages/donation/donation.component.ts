@@ -24,12 +24,12 @@ export class DonationComponent implements OnInit, OnDestroy {
     private router: Router,
   ) { }
   ngOnDestroy(): void {
-    throw new Error('Method not implemented.');
+    this.ref.close();
   }
   ngOnInit(): void {
-    this.getFundsRequest();
+    this.getFunds();
   }
-  async getFundsRequest() {
+  public async getFunds() {
     await this.donationService.getAllFunds().then(fundRes => {
       console.log(fundRes)
       this.fundList = this.donationService.convertToFundType(fundRes);
@@ -63,9 +63,10 @@ export class DonationComponent implements OnInit, OnDestroy {
 
   }
   onRowSelect(data) {
-    console.log(data)
+    let passingFund = new Fund();
+    passingFund = passingFund.copyFund(data);
     this.ref = this.dialogService.open(FundCardComponent, {
-      data: data,
+      data: passingFund,
       width: '50%',
       contentStyle: { overflow: 'auto' },
       baseZIndex: 10000,

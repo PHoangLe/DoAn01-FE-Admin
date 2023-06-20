@@ -62,13 +62,6 @@ export class DonationService {
 
   async updateFund(fund: Fund) {
     let headers = this.getHttpHeader()
-    console.log(fund.fundName);
-    console.log(fund.fundCover);
-    console.log(fund.fundDescription);
-    console.log(fund.valuePerDonationPackage);
-    console.log(fund.fundType);
-    console.log(fund.fundBalance);
-
     return await this.http.put(this.baseUrl + `funds/${fund.fundID}`, {
       fundName: fund.fundName,
       fundCover: fund.fundCover,

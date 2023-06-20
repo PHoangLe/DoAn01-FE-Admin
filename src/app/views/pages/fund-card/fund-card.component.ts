@@ -5,7 +5,7 @@ import { FileUploadService } from '../../../services/file-upload.service'
 import { DonationService } from 'src/app/services/donation.service';
 import { MessageService } from 'primeng/api';
 import { Fund } from 'src/app/model/Fund'
-
+import { DonationComponent } from '../donation/donation.component';
 @Component({
   selector: 'app-fund-card',
   templateUrl: './fund-card.component.html',
@@ -38,7 +38,8 @@ export class FundCardComponent implements OnInit {
     public ref: DynamicDialogRef,
     private fileUpload: FileUploadService,
     private donationService: DonationService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private DonationComponent: DonationComponent,
   ) {
     this.fund = this.config.data
     this.selectedFundType = this.listFundTypes.find(fundType => fundType.id === this.fund.fundType)
@@ -56,10 +57,9 @@ export class FundCardComponent implements OnInit {
   addNewFund() {
     console.log(this.fund)
     this.fund.fundType = this.selectedFundType.id
-
     this.donationService.addNewFund(this.fund).then((response) => {
-      console.log(response)
       this.messageService.add({ key: 'fund', severity: 'success', summary: "Thêm mới thành công!" });
+      this.DonationComponent.getFunds();
       window.setInterval(() =>
         this.ref.close(), 1000);
     })
@@ -72,8 +72,8 @@ export class FundCardComponent implements OnInit {
   updateFund() {
     this.fund.fundType = this.selectedFundType.id
     this.donationService.updateFund(this.fund).then((response) => {
-      console.log(response)
       this.messageService.add({ key: 'fund', severity: 'success', summary: "Cập nhật thành công!" });
+      this.DonationComponent.getFunds();
       window.setInterval(() =>
         this.ref.close(), 1000);
     })

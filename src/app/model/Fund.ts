@@ -17,6 +17,16 @@ export class Fund {
     this._fundBalance = fundBalance;
   }
 
+  public copyFund(fund: Fund): Fund {
+    return new Fund(
+      fund.fundID, fund.fundName
+      , fund.fundCover
+      , fund.fundDescription
+      , fund.valuePerDonationPackage
+      , fund.fundType
+      , fund.fundBalance)
+  }
+
   get fundID(): string {
     return this._fundID;
   }
