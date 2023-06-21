@@ -4,6 +4,7 @@ import { MessageService } from 'primeng/api';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { DonationService } from 'src/app/services/donation.service';
 import { FundCardComponent } from '../fund-card/fund-card.component';
+import { Fund } from 'src/app/model/Fund';
 
 @Component({
   selector: 'app-donation',
@@ -13,7 +14,7 @@ import { FundCardComponent } from '../fund-card/fund-card.component';
 
 })
 export class DonationComponent implements OnInit, OnDestroy {
-  listRequest: any;
+  fundList: Fund[];
   isLoading = true;
   ref: DynamicDialogRef;
 
@@ -23,15 +24,16 @@ export class DonationComponent implements OnInit, OnDestroy {
     private router: Router,
   ) { }
   ngOnDestroy(): void {
-    throw new Error('Method not implemented.');
+    this.ref.close();
   }
   ngOnInit(): void {
-    this.getFundsRequest();
+    this.getFunds();
   }
-  async getFundsRequest() {
-    await this.donationService.getAllFunds().then(request => {
-      console.log(request)
-      this.listRequest = request;
+  public async getFunds() {
+    await this.donationService.getAllFunds().then(fundRes => {
+      console.log(fundRes)
+      this.fundList = this.donationService.convertToFundType(fundRes);
+      console.log(this.fundList)
     })
       .catch(error => {
         console.log(error.error.message)
@@ -52,6 +54,7 @@ export class DonationComponent implements OnInit, OnDestroy {
 
   addNewFund() {
     this.ref = this.dialogService.open(FundCardComponent, {
+      data: "",
       width: '50%',
       contentStyle: { overflow: 'auto' },
       baseZIndex: 10000,
@@ -60,9 +63,10 @@ export class DonationComponent implements OnInit, OnDestroy {
 
   }
   onRowSelect(data) {
-    console.log(data)
+    let passingFund = new Fund();
+    passingFund = passingFund.copyFund(data);
     this.ref = this.dialogService.open(FundCardComponent, {
-      data: data,
+      data: passingFund,
       width: '50%',
       contentStyle: { overflow: 'auto' },
       baseZIndex: 10000,

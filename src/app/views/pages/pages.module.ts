@@ -36,6 +36,8 @@ import { FundRequestComponent } from './fund-request/fund-request.component';
 import { DonationRequestComponent } from './donation-request/donation-request.component';
 import { FundCardComponent } from './fund-card/fund-card.component';
 import { InputTextareaModule } from 'primeng/inputtextarea';
+import { DropdownModule } from 'primeng/dropdown';
+
 
 import { environment } from 'src/environments/environment'
 import { AngularFireModule } from '@angular/fire/compat';
@@ -90,11 +92,12 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
     AngularFireStorageModule,
+    DropdownModule
   ],
   providers: [
-    MessageService, 
+    MessageService,
     ConfirmationService,
-    ]
+  ]
 
 })
 export class PagesModule { }
