@@ -23,6 +23,7 @@ export class DonationRequestComponent {
   async getFundsRequest() {
     await this.donationService.getAllDonations().then(request => {
       this.listRequest = request;
+      console.log(this.listRequest);
     })
       .catch(error => {
         console.log(error.error.message)
