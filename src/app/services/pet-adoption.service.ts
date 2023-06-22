@@ -9,7 +9,7 @@ import { ShelterService } from './shelter.service';
 })
 export class PetAdoptionService {
 
-  private baseUrl = "http://localhost:8080/api/v1/adopt";
+  private baseUrl = "https://doan01-be-production.up.railway.app/api/v1/adopt";
   constructor(
     private http: HttpClient,
     private petService: PetService,
@@ -58,21 +58,21 @@ export class PetAdoptionService {
 
   async acceptOnlineAdoption(applicationID: string) {
     let headers = this.getHttpHeader();
-    return await (this.http.get(this.baseUrl + `/confirmOnlineAdoptionRequest/${applicationID}`, { headers })).toPromise()
+    return await (this.http.put(this.baseUrl + `/confirmOnlineAdoptionRequest/${applicationID}`, null, { headers })).toPromise()
   }
   async acceptAdoption(applicationID: string) {
     let headers = this.getHttpHeader();
-    return await (this.http.get(this.baseUrl + `/confirmAdoptionRequest/${applicationID}`, { headers })).toPromise()
+    return await (this.http.put(this.baseUrl + `/confirmAdoptionRequest/${applicationID}`, null, { headers })).toPromise()
 
   }
 
   async declineOnlineAdoption(applicationID: string) {
     let headers = this.getHttpHeader();
-    return await (this.http.get(this.baseUrl + `/declineOnlineAdoptionRequest/${applicationID}`, { headers })).toPromise()
+    return await (this.http.put(this.baseUrl + `/declineOnlineAdoptionRequest/${applicationID}`, null, { headers })).toPromise()
   }
   async declineAdoption(applicationID: string) {
     let headers = this.getHttpHeader();
-    return await (this.http.get(this.baseUrl + `/declineAdoptionRequest/${applicationID}`, { headers })).toPromise()
+    return await (this.http.put(this.baseUrl + `/declineAdoptionRequest/${applicationID}`, null, { headers })).toPromise()
   }
 
   setStorageAdoption(adoption: any) {
