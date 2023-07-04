@@ -44,8 +44,8 @@
     <ng-template pTemplate="header">
       <tr>
         <th style="min-width: 10%" class="py-3 ps-4">Tên quỹ</th>
-        <th style="min-width: 10%" class="py-3">Sô tiền mỗi gói</th>
-        <th style="min-width: 10%" class="py-3">Khả dụng</th>
+        <th style="min-width: 10%" class="py-3 text-center">Giá trị mỗi gói ủng hộ</th>
+        <th style="min-width: 10%" class="py-3 text-center">Số tiền khả dụng</th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-request>
@@ -53,11 +53,11 @@
         <td class="ps-4">
           {{ request.fundName }}
         </td>
-        <td>
-          {{ request.valuePerDonationPackage.toLocaleString() }}
+        <td class="text-center">
+          {{ request.valuePerDonationPackage.toLocaleString() + " VND" }}
         </td>
-        <td>
-          {{ request.fundBalance.toLocaleString() }}
+        <td class="text-center">
+          {{ request.fundBalance.toLocaleString() + " VND" }} 
         </td>
       </tr>
     </ng-template>

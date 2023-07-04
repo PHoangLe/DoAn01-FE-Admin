@@ -76,14 +76,14 @@
         <td>
           {{ request.date ? (request.date | date : "dd/MM/yyyy") : "Chưa rõ" }}
         </td>
-        <td class="d-flex justify-content-center border border-0">
+        <td class="d-flex text-center border border-0">
           <p-tag
             [value]="
-              request.donationStatus === 'PENDING'
+              (request.donationStatus === 'PENDING'
                 ? 'Đang chờ'
                 : request.donationStatus === 'COMPLETED'
                 ? 'Xác nhận'
-                : 'Từ chối'
+                : 'Từ chối') + 'VND'
             "
             [severity]="getSeverity(request.donationStatus)"
           ></p-tag>

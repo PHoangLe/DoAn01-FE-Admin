@@ -65,6 +65,47 @@
       [autoResize]="true"
     ></textarea>
   </span>
+
+  <div class="table-wrapper">
+    <h6 class="addressLabel ps-0 my-3">Các giao dịch liên quan đến quỹ</h6>
+    <p-table
+      #dt
+      [value]="fundTransactionsList"
+      [paginator]="true"
+      dataKey="id"
+      [rows]="10"
+      styleClass="p-datatable-striped"
+      selectionMode="single"
+      [tableStyle]="{ 'min-width': '25rem' }"
+    >
+      <ng-template pTemplate="header">
+        <tr>
+          <th style="min-width: 10%" class="py-3 ps-4">Bên gửi</th>
+          <th style="min-width: 10%" class="py-3">Bên nhận</th>
+          <th style="min-width: 10%" class="py-3 text-center" pSortableColumn="value">Giá trị giao dịch <p-sortIcon field="value"></p-sortIcon></th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-request>
+        <tr class="p-selectable-row">
+          <td class="ps-4">
+            {{ request.transactionType === "USER_TO_FUND" ? request.user.userFirstName + " " + request.user.userLastName : request.fund.fundName }}
+          </td>
+          <td>
+            {{ request.transactionType === "USER_TO_FUND" ? request.fund.fundName : request.user.userFirstName + " " + request.user.userLastName }}
+          </td>
+          <td class="text-center">
+            <p-tag
+            [value]="
+              (request.transactionType == 'USER_TO_FUND' ? request.value : '-' + request.value) + ' VND'
+            "
+            [severity]="getSeverity(request.transactionType)"
+          ></p-tag>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+
   <div class="button-group d-flex justify-content-center mt-4">
     <button
       type="submit"

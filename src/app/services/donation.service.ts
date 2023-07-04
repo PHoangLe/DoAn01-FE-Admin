@@ -21,6 +21,11 @@ export class DonationService {
     return await this.http.get(this.baseUrl + 'funds', { headers: headers }).toPromise();
   }
 
+  async getFundTransactions(fundID: string) {
+    let headers = this.getHttpHeader()
+    return await this.http.get(this.baseUrl + `funds/transactions/fund/${fundID}`, { headers: headers }).toPromise();
+  }
+
   async getAllFundRequest() {
     let headers = this.getHttpHeader()
     return await this.http.get(this.baseUrl + 'funding-requests', { headers: headers }).toPromise();
