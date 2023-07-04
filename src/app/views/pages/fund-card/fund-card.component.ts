@@ -13,6 +13,7 @@ import { DonationComponent } from '../donation/donation.component';
 })
 export class FundCardComponent implements OnInit {
   protected fund: Fund;
+  protected fundTransactionsList: any;
   avatarFile: any;
   isWrongInput: boolean = true;
   selectedFundType: any;
@@ -49,10 +50,30 @@ export class FundCardComponent implements OnInit {
     }
   }
   ngOnInit(): void {
-
+    this.getFundTransactions()
 
   }
 
+  public async getFundTransactions() {
+    await this.donationService.getFundTransactions(this.fund.fundID).then(fundRes => {
+      console.log(fundRes)
+      this.fundTransactionsList = fundRes;
+      console.log(this.fundTransactionsList)
+    })
+      .catch(error => {
+        console.log(error.error.message)
+      })
+    // this.isLoading = false
+  }
+
+  getSeverity(status: string) {
+    switch (status) {
+      case 'USER_TO_FUND':
+        return 'success';
+      default:
+        return 'danger';
+    }
+  }
 
   addNewFund() {
     console.log(this.fund)
