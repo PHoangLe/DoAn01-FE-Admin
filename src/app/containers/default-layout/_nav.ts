@@ -10,12 +10,12 @@ export const navItems: INavData[] = [
   {
     name: 'Nhận nuôi',
     url: 'pages/adoption-request',
-    iconComponent: { name: 'cil-chart-pie' }
+    iconComponent: { name: 'cil-dog' }
   },
   {
     name: 'Đăng ký trại',
     url: 'pages/shelter-request',
-    iconComponent: { name: 'cil-chart-pie' }
+    iconComponent: { name: 'cil-user-plus' }
   },
   {
     name: 'Quỹ cứu trợ',
@@ -38,6 +38,6 @@ export const navItems: INavData[] = [
   {
     name: 'Tin nhắn',
     url: 'pages/chat',
-    iconComponent: { name: 'cil-chart-pie' }
+    iconComponent: { name: 'cil-comment-bubble' }
   },
 ];

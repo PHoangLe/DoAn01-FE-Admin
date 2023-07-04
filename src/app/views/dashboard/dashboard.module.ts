@@ -13,6 +13,7 @@ import {
   ProgressModule,
   TableModule,
   TabsModule,
+
   WidgetModule
 } from '@coreui/angular';
 import { IconModule } from '@coreui/icons-angular';
@@ -23,6 +24,8 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
 
 import { WidgetsModule } from '../widgets/widgets.module';
+
+import { ChartModule } from 'primeng/chart';
 
 @NgModule({
   imports: [
@@ -43,7 +46,8 @@ import { WidgetsModule } from '../widgets/widgets.module';
     AvatarModule,
     TableModule,
     WidgetsModule,
-    WidgetModule
+    WidgetModule,
+    ChartModule
 
   ],
   declarations: [DashboardComponent]

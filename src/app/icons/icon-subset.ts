@@ -9,6 +9,7 @@ import {
   cibGoogle,
   cibLinkedin,
   cibSkype,
+  cilDog,
   cibTwitter,
   cifBr,
   cifEs,
@@ -88,10 +89,13 @@ import {
   cilUserFemale,
   cilUserFollow,
   cilUserUnfollow,
+  cilUserPlus,
+  cilCommentBubble
 } from '@coreui/icons';
 
 export const iconSubset = {
   cibCcAmex,
+  cilDog,
   cibCcApplePay,
   cibCcMastercard,
   cibCcPaypal,
@@ -180,10 +184,15 @@ export const iconSubset = {
   cilUserFemale,
   cilUserFollow,
   cilUserUnfollow,
+  cilUserPlus,
+  cilCommentBubble
 };
 
 export enum IconSubset {
+  cilCommentBubble = 'cilCommentBubble',
+  cilUserPlus = 'cilUserPlus',
   cibCcAmex = 'cibCcAmex',
+  cilDog = 'cilDog',
   cibCcApplePay = 'cibCcApplePay',
   cibCcMastercard = 'cibCcMastercard',
   cibCcPaypal = 'cibCcPaypal',
@@ -215,7 +224,7 @@ export enum IconSubset {
   cilCalendar = 'cilCalendar',
   cilChart = 'cilChart',
   cilChartPie = 'cilChartPie',
-  cilCheck='cilCheck',
+  cilCheck = 'cilCheck',
   cilChevronLeft = 'cilChevronLeft',
   cilChevronRight = 'cilChevronRight',
   cilCloudDownload = 'cilCloudDownload',
