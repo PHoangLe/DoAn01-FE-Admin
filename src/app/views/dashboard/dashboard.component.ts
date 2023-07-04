@@ -59,12 +59,12 @@ export class DashboardComponent implements OnInit {
       datasets: [
         {
           label: "Quỹ vào",
-          backgroundColor: '#f87979',
+          backgroundColor: '#3399ff',
           data: this.getfundChartData(this.pageStat.totalOfFundReceivedByMonth)
         },
         {
           label: 'Quỹ ra',
-          backgroundColor: '#f7e4e5',
+          backgroundColor: '#f9b115',
           data: this.getfundChartData(this.pageStat.totalOfFundSentByMonth)
         }
       ]
@@ -76,10 +76,11 @@ export class DashboardComponent implements OnInit {
       datasets: [
         {
           label: "Trại cứu trợ mới",
-          backgroundColor: '#f87979',
+          backgroundColor: '#2eb85c',
           data: this.getShelterChartData(this.pageStat.totalOfShelterApprovedByMonth)
         }
-      ]
+      ],
+
     }
 
     this.petChartData = {
@@ -88,7 +89,7 @@ export class DashboardComponent implements OnInit {
       datasets: [
         {
           label: "Thú cưng được nhận nuôi",
-          backgroundColor: '#f87979',
+          backgroundColor: '#3399ff',
           data: this.getShelterChartData(this.pageStat.adoptedAnimalByMonth)
         }
       ]
@@ -103,7 +104,7 @@ export class DashboardComponent implements OnInit {
     for (let i = 0; i < 12; i++) {
       if (fundMap.get((i + 1).toString()) !== undefined) {
         let fund = new Map(Object.entries(fundMap.get((i + 1).toString())));
-        data[i] = fund.get("count")
+        data[i] = fund.get("sum")
       }
     }
     return data
