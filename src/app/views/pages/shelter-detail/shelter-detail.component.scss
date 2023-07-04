@@ -35,9 +35,13 @@
   }
 
   .logo {
-    margin: 20px;
+    margin: 0 20px;
     img {
-      max-width: 280px;
+      max-width: 250px;
+    }
+    button {
+      width: fit-content;
+      padding: 0 2rem;
     }
   }
   button {

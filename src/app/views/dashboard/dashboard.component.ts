@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 
 import { DashboardChartsData, IChartProps } from './dashboard-charts-data';
+import { StatisticService } from 'src/app/services/statistic.service'
 
 interface IUser {
   name: string;
@@ -22,7 +23,10 @@ interface IUser {
   styleUrls: ['dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  constructor(private chartsData: DashboardChartsData) {
+  constructor(private chartsData: DashboardChartsData,
+    private statisticService: StatisticService
+  ) {
+    this.getStat();
   }
 
   public users: IUser[] = [
@@ -106,12 +110,13 @@ export class DashboardComponent implements OnInit {
     }
   ];
   public mainChart: IChartProps = {};
+  pageStat;
   public chart: Array<IChartProps> = [];
   public trafficRadioGroup = new UntypedFormGroup({
     trafficRadio: new UntypedFormControl('Month')
   });
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.initCharts();
   }
 
@@ -123,5 +128,14 @@ export class DashboardComponent implements OnInit {
     this.trafficRadioGroup.setValue({ trafficRadio: value });
     this.chartsData.initMainChart(value);
     this.initCharts();
+  }
+  getStat() {
+    this.statisticService.getAllStat().then(res => {
+      this.pageStat = res;
+      console.log(this.pageStat)
+    })
+      .catch(err => {
+        console.log(err.error.message)
+      })
   }
 }

@@ -29,7 +29,7 @@ export class AdoptionDetailComponent implements OnInit {
     this.petAdoptionService.acceptOnlineAdoption(this.requestInfo.applicationID).then((response) => {
       this.messageService.add({ key: "message", severity: 'success', detail: 'Chấp nhận yêu cầu' })
       setTimeout(() => {
-        this.router.navigate(['/adoption-request'])
+        this.router.navigate(['pages/adoption-request'])
       }, 2000);
     })
   }
@@ -38,7 +38,7 @@ export class AdoptionDetailComponent implements OnInit {
     this.petAdoptionService.declineOnlineAdoption(this.requestInfo.applicationID).then((response) => {
       this.messageService.add({ key: "message", severity: 'warning', detail: 'Từ chối yêu cầu' })
       setTimeout(() => {
-        this.router.navigate(['/adoption-request'])
+        this.router.navigate(['pages/adoption-request'])
       }, 2000);
     })
   }

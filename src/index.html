@@ -38,6 +38,11 @@
       integrity="sha256-ZwqZIVdD3iXNyGHbSYdsmWP//UBokj2FHAxKuSBKDSo="
       crossorigin="anonymous"
     ></script>
+    <script>
+      if (global === undefined) {
+        var global = window;
+      }
+    </script>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css"

@@ -34,6 +34,10 @@ export const navItems: INavData[] = [
         url: 'pages/fund-request',
       }
     ]
-
-  }
+  },
+  {
+    name: 'Tin nhắn',
+    url: 'pages/chat',
+    iconComponent: { name: 'cil-chart-pie' }
+  },
 ];

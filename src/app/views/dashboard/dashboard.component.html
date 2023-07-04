@@ -1,4 +1,37 @@
-<app-widgets-dropdown></app-widgets-dropdown>
+<!-- <app-widgets-dropdown [pageStat]="pageStat"></app-widgets-dropdown> -->
+<c-row>
+  <c-col sm="6" xl="3">
+    <div class="widget">
+      {{ pageStat.totalNumbersOfUser }}
+      Người dùng
+    </div>
+  </c-col>
+
+  <c-col sm="6" xl="3">
+    <c-widget-stat-a class="mb-4 pb-2" color="primary" title="Trại cứu trợ">
+      <ng-template cTemplateId="widgetValueTemplate" ngPreserveWhitespaces>
+        {{ pageStat.totalNumbersOfShelter }}
+      </ng-template>
+    </c-widget-stat-a>
+  </c-col>
+
+  <c-col sm="6" xl="3">
+    <c-widget-stat-a class="mb-4 pb-2" color="primary" title="Chó mèo ">
+      <ng-template cTemplateId="widgetValueTemplate" ngPreserveWhitespaces>
+        {{ pageStat.totalNumbersOfAnimal }}
+      </ng-template>
+    </c-widget-stat-a>
+  </c-col>
+
+  <c-col sm="6" xl="3">
+    <c-widget-stat-a class="mb-4 pb-2" color="primary" title="Số dư quỹ">
+      <ng-template cTemplateId="widgetValueTemplate" ngPreserveWhitespaces>
+        {{ pageStat.totalFundBalance }}
+      </ng-template>
+    </c-widget-stat-a>
+  </c-col>
+</c-row>
+
 <c-card class="mb-4">
   <c-card-body>
     <c-row>
@@ -24,7 +57,8 @@
               cFormCheckLabel
               color="secondary"
               variant="outline"
-            >Day</label>
+              >Day</label
+            >
 
             <input
               class="btn-check"
@@ -38,7 +72,8 @@
               cFormCheckLabel
               color="secondary"
               variant="outline"
-            >Month</label>
+              >Month</label
+            >
 
             <input
               class="btn-check"
@@ -52,7 +87,8 @@
               cFormCheckLabel
               color="secondary"
               variant="outline"
-            >Year</label>
+              >Year</label
+            >
           </c-button-group>
         </form>
       </c-col>
@@ -67,48 +103,39 @@
       Main chart
     </c-chart>
   </c-card-body>
-  <c-card-footer>
+  <!-- <c-card-footer>
     <c-row class="text-center" [md]="5" [xs]="1">
-      <c-col class="mb-sm-2 mb-0">
+      <c-col class="mb-sm-3 mb-0">
         <div class="text-medium-emphasis">Visits</div>
         <strong>29.703 Users (40%)</strong>
         <c-progress class="mt-2" thin>
           <c-progress-bar color="success" value="40"></c-progress-bar>
         </c-progress>
       </c-col>
-      <c-col class="mb-sm-2 mb-0">
+      <c-col class="mb-sm-3 mb-0">
         <div class="text-medium-emphasis">Unique</div>
         <strong>24.093 Users (20%)</strong>
         <c-progress class="mt-2" thin>
           <c-progress-bar color="info" value="20"></c-progress-bar>
         </c-progress>
       </c-col>
-      <c-col class="mb-sm-2 mb-0">
+      <c-col class="mb-sm-3 mb-0">
         <div class="text-medium-emphasis">Page views</div>
         <strong>78.706 Views (60%)</strong>
         <c-progress class="mt-2" thin>
           <c-progress-bar color="warning" value="60"></c-progress-bar>
         </c-progress>
       </c-col>
-      <c-col class="mb-sm-2 mb-0">
+      <c-col class="mb-sm-3 mb-0">
         <div class="text-medium-emphasis">New Users</div>
         <strong>22.123 Users (80%)</strong>
         <c-progress class="mt-2" thin>
           <c-progress-bar color="danger" value="80"></c-progress-bar>
         </c-progress>
       </c-col>
-      <c-col class="mb-sm-2 mb-0">
-        <div class="text-medium-emphasis">Bounce Rate</div>
-        <strong>Average Rate (40.15%)</strong>
-        <c-progress class="mt-2" thin>
-          <c-progress-bar value="40"></c-progress-bar>
-        </c-progress>
-      </c-col>
     </c-row>
-  </c-card-footer>
+  </c-card-footer> -->
 </c-card>
-
-<app-widgets-brand [withCharts]="true"></app-widgets-brand>
 
 <c-row>
   <c-col xs>
@@ -239,7 +266,9 @@
                 <span>New clients</span>
                 &nbsp;&nbsp;
                 <sup>
-                  <span class="badge badge-pill badge-sm bg-danger">&nbsp;</span>
+                  <span class="badge badge-pill badge-sm bg-danger"
+                    >&nbsp;</span
+                  >
                 </sup>
                 <span>Recurring clients</span>
               </small>
@@ -249,13 +278,17 @@
           <c-col md="6" xl="6" xs="12">
             <c-row>
               <c-col sm="6">
-                <div class="border-start border-start-4 border-start-warning py-1 px-3 mb-3">
+                <div
+                  class="border-start border-start-4 border-start-warning py-1 px-3 mb-3"
+                >
                   <div class="text-medium-emphasis small">Page views</div>
                   <div class="fs-5 fw-semibold">78,623</div>
                 </div>
               </c-col>
               <c-col sm="6">
-                <div class="border-start border-start-4 border-start-success py-1 px-3 mb-3">
+                <div
+                  class="border-start border-start-4 border-start-success py-1 px-3 mb-3"
+                >
                   <div class="text-medium-emphasis small">Organic</div>
                   <div class="fs-5 fw-semibold">49,123</div>
                 </div>
