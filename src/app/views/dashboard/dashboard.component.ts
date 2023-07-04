@@ -32,10 +32,14 @@ export class DashboardComponent implements OnInit {
   protected fundChartData;
   protected shelterChartData;
   protected petChartData;
+  protected isLoading: boolean = false;
   receivedFund = Array.from({ length: 12 }).fill(0);
 
   async ngOnInit() {
+    this.isLoading = true;
     await this.getStat();
+    this.isLoading = false;
+
   }
 
 
@@ -89,6 +93,7 @@ export class DashboardComponent implements OnInit {
         }
       ]
     }
+
   }
 
   getfundChartData(object) {
