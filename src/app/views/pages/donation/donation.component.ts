@@ -16,6 +16,23 @@ import { Fund } from 'src/app/model/Fund';
 export class DonationComponent implements OnInit, OnDestroy {
   fundList: Fund[];
   isLoading = true;
+  listFundTypes = [
+    {
+      id: 'FOOD', value: 'Thực phẩm'
+    },
+    {
+      id: 'MEDICAL', value: 'Y tế'
+    },
+    {
+      id: 'ENTERTAINMENT', value: 'Giải trí'
+    },
+    {
+      id: 'FACILITY', value: 'Cơ sở vật chất'
+    },
+    {
+      id: 'MULTI_PURPOSE', value: 'Nhiều mục đích'
+    }
+  ]
   ref: DynamicDialogRef;
 
   constructor(
@@ -49,6 +66,16 @@ export class DonationComponent implements OnInit, OnDestroy {
         return 'info';
       default:
         return 'danger';
+    }
+  }
+
+  getFundType(fundType: string) {
+    switch (fundType) {
+      case 'FOOD': return 'Thực phẩm'
+      case 'MEDICAL': return 'Y tế'
+      case 'ENTERTAINMENT': return 'Giải trí'
+      case 'FACILITY': return 'Cơ sở vật chất'
+      default: return 'Nhiều mục đích'
     }
   }
 

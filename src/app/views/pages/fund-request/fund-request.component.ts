@@ -56,7 +56,9 @@ export class FundRequestComponent {
 
   rejectRequest(fundRequestID) {
     this.donationService.rejectFundRequest(fundRequestID).then(response => {
-      this.messageService.add({ key: 'reactFundRequest', severity: 'error', summary: 'Xác nhận thành công!' })
+      this.messageService.add({ key: 'reactFundRequest', severity: 'success', summary: 'Đã từ chối!' })
+      let fundRequest = this.listRequest.find(fundReq => fundReq.requestID === fundRequestID)
+      fundRequest.requestStatus = 'REJECTED'
     })
       .catch((err) => {
         this.messageService.add({ key: 'reactFundRequest', severity: 'error', summary: err.error.message })
@@ -64,10 +66,6 @@ export class FundRequestComponent {
       })
   }
 
-  onRowSelect(data) {
-    console.log(data)
-    // this.petAdopt.setStorageAdoption(data)
-    // this.router.navigate([`pages/adoption-detail/${data.applicationID}`])
-  }
+
 
 }

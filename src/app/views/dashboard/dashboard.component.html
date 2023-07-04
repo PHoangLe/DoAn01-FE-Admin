@@ -13,26 +13,28 @@
 </div>
 <div class="d-flex gap-2">
   <c-card class="mb-4 w-50" *ngIf="pageStat">
+    <h3 class="text-center mt-2">Trại cứu trợ</h3>
+
     <h3 class="text-center mt-2"></h3>
     <c-card-body>
       <c-chart
         [data]="shelterChartData"
         type="line"
         [ngStyle]="{ 'marginTop.px': 40 }"
-        title="Tổng quỹ trong trại"
+        title="Tổng trại cứu trợ"
       >
         Main chart
       </c-chart>
     </c-card-body>
   </c-card>
   <c-card class="mb-4 w-50" *ngIf="pageStat">
-    <h3 class="text-center mt-2"></h3>
+    <h3 class="text-center mt-2">Thú cưng</h3>
     <c-card-body>
       <c-chart
         [data]="petChartData"
         type="line"
         [ngStyle]="{ 'marginTop.px': 40 }"
-        title="Tổng quỹ trong trại"
+        title="Thú cưng trong trại"
       >
         Main chart
       </c-chart>
