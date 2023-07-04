@@ -10,6 +10,7 @@ import { ShelterDetailComponent } from './shelter-detail/shelter-detail.componen
 import { DonationComponent } from './donation/donation.component';
 import { DonationRequestComponent } from './donation-request/donation-request.component';
 import { FundRequestComponent } from './fund-request/fund-request.component';
+import { ChatComponent } from './chat/chat.component';
 
 
 const routes: Routes = [
@@ -82,6 +83,13 @@ const routes: Routes = [
     component: FundRequestComponent,
     data: {
       title: 'Yêu cầu hỗ trợ'
+    }
+  },
+  {
+    path: 'chat',
+    component: ChatComponent,
+    data: {
+      title: 'Tin nhắn'
     }
   }
 ];

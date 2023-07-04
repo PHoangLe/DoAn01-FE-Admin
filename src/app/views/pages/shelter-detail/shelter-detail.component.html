@@ -75,8 +75,13 @@
       </button>
     </div>
   </div>
-  <div class="logo col-sm-4 d-flex justify-content-center align-items-center">
+  <div
+    class="logo col-sm-4 d-flex justify-content-center align-items-center flex-column"
+  >
     <img src="{{ requestInfo.shelterLogo }}" alt="" class="rounded-circle" />
+    <button class="btn btn-primary" (click)="contactRequestor()">
+      Liên hệ
+    </button>
   </div>
 </div>
 <p-toast key="message"></p-toast>

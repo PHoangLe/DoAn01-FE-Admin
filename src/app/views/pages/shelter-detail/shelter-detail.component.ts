@@ -2,11 +2,14 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { ShelterService } from 'src/app/services/shelter.service';
+import { ChatComponent } from '../chat/chat.component';
 
 @Component({
   selector: 'app-shelter-detail',
   templateUrl: './shelter-detail.component.html',
-  styleUrls: ['./shelter-detail.component.scss']
+  styleUrls: ['./shelter-detail.component.scss'],
+  providers: [ChatComponent]
+
 })
 export class ShelterDetailComponent {
 
@@ -14,6 +17,7 @@ export class ShelterDetailComponent {
   constructor(
     private messageService: MessageService,
     private shelterService: ShelterService,
+    private chat: ChatComponent,
     private router: Router) {
 
   }
@@ -46,7 +50,13 @@ export class ShelterDetailComponent {
   }
 
   contactRequestor() {
-
+    sessionStorage.setItem("reciepientID", this.requestInfo.userID)
+    this.chat.connect();
+    setTimeout(() => {
+      this.chat.setReceipientID(this.requestInfo.userID);
+      this.chat.sendValue("Bắt đầu trò chuyện")
+      // this.router.navigate(['pages/chat']);
+    }, 2500);
   }
 
   urlToFileType(url: string): string {

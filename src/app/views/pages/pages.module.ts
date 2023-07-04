@@ -44,6 +44,7 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { ChatComponent } from './chat/chat.component';
 
 
 
@@ -61,7 +62,8 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
     DonationComponent,
     FundRequestComponent,
     DonationRequestComponent,
-    FundCardComponent
+    FundCardComponent,
+    ChatComponent
   ],
   imports: [
     CommonModule,
