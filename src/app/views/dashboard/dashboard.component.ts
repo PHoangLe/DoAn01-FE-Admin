@@ -64,7 +64,30 @@ export class DashboardComponent implements OnInit {
           data: this.getfundChartData(this.pageStat.totalOfFundSentByMonth)
         }
       ]
+    }
 
+    this.shelterChartData = {
+      title: 'Main chart',
+      labels: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
+      datasets: [
+        {
+          label: "Trại cứu trợ mới",
+          backgroundColor: '#f87979',
+          data: this.getShelterChartData(this.pageStat.totalOfShelterApprovedByMonth)
+        }
+      ]
+    }
+
+    this.petChartData = {
+      title: 'Main chart',
+      labels: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
+      datasets: [
+        {
+          label: "Thú cưng được nhận nuôi",
+          backgroundColor: '#f87979',
+          data: this.getShelterChartData(this.pageStat.adoptedAnimalByMonth)
+        }
+      ]
     }
   }
 
@@ -76,6 +99,18 @@ export class DashboardComponent implements OnInit {
       if (fundMap.get((i + 1).toString()) !== undefined) {
         let fund = new Map(Object.entries(fundMap.get((i + 1).toString())));
         data[i] = fund.get("count")
+      }
+    }
+    return data
+  }
+
+  getShelterChartData(object) {
+    let fundMap = new Map(Object.entries(object));
+    let data = Array.from({ length: 12 }).fill(0);
+
+    for (let i = 0; i < 12; i++) {
+      if (fundMap.get((i + 1).toString()) !== undefined) {
+        data[i] = (fundMap.get((i + 1).toString()));
       }
     }
     return data

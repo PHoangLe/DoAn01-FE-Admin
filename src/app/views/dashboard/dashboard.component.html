@@ -2,20 +2,8 @@
   *ngIf="pageStat"
   [pageStat]="pageStat"
 ></app-widgets-dropdown>
-<c-card class="mb-4">
-  <h3 class="text-center mt-2">Tổng quỹ cứu trợ</h3>
-  <c-card-body>
-    <c-chart
-      [data]="fundChartData"
-      type="bar"
-      [ngStyle]="{ 'marginTop.px': 40 }"
-      title="Tổng quỹ trong trại"
-    >
-    </c-chart>
-  </c-card-body>
-</c-card>
 
-<c-card class="mb-4">
+<c-card class="mb-4 w-50">
   <h3 class="text-center mt-2"></h3>
   <c-card-body>
     <c-chart
@@ -28,7 +16,7 @@
     </c-chart>
   </c-card-body>
 </c-card>
-<c-card class="mb-4">
+<c-card class="mb-4 w-50">
   <h3 class="text-center mt-2"></h3>
   <c-card-body>
     <c-chart
@@ -38,6 +26,18 @@
       title="Tổng quỹ trong trại"
     >
       Main chart
+    </c-chart>
+  </c-card-body>
+</c-card>
+<c-card class="mb-4">
+  <h3 class="text-center mt-2">Tổng quỹ cứu trợ</h3>
+  <c-card-body>
+    <c-chart
+      [data]="fundChartData"
+      type="bar"
+      [ngStyle]="{ 'marginTop.px': 40 }"
+      title="Tổng quỹ trong trại"
+    >
     </c-chart>
   </c-card-body>
 </c-card>

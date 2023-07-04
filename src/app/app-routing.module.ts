@@ -16,7 +16,6 @@ const routes: Routes = [
     path: '',
     component: DefaultLayoutComponent,
     data: {
-      title: 'Trang chủ'
     },
     children: [
       {
