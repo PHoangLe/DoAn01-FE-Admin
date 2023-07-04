@@ -55,7 +55,7 @@ export class ShelterDetailComponent {
     setTimeout(() => {
       this.chat.setReceipientID(this.requestInfo.userID);
       this.chat.sendValue("Bắt đầu trò chuyện")
-      // this.router.navigate(['pages/chat']);
+      this.router.navigate(['pages/chat']);
     }, 2500);
   }
 

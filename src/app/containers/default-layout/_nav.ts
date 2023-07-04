@@ -40,4 +40,9 @@ export const navItems: INavData[] = [
     url: 'pages/chat',
     iconComponent: { name: 'cil-comment-bubble' }
   },
+  {
+    name: 'Đăng xuất',
+    url: '/login',
+    iconComponent: { name: 'cil-account-logout' }
+  },
 ];
