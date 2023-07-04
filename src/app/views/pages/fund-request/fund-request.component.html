@@ -42,16 +42,26 @@
     </ng-template>
     <ng-template pTemplate="header">
       <tr>
-        <th style="min-width: 10%" class="py-3 ps-4">Tên quỹ</th>
-        <th style="min-width: 10%" class="py-3">Tên trại</th>
-        <th style="min-width: 10%" class="py-3" pSortableColumn="date" >Ngày gửi <p-sortIcon field="date"></p-sortIcon></th>
-        <th style="min-width: 20%" class="py-3" pSortableColumn="value" >Số tiền xin <p-sortIcon field="value"></p-sortIcon></th>
-        <th style="min-width: 10%" class="py-3 text-center" pSortableColumn="requestStatus">Trạng thái <p-sortIcon field="requestStatus"></p-sortIcon></th>
+        <th style="min-width: 20%" class="py-3 ps-4">Tên quỹ</th>
+        <th style="width: 20%" class="py-3">Tên trại</th>
+        <th style="width: 15%" class="py-3" pSortableColumn="date">
+          Ngày gửi <p-sortIcon field="date"></p-sortIcon>
+        </th>
+        <th style="width: 10%" class="py-3" pSortableColumn="value">
+          Số tiền xin <p-sortIcon field="value"></p-sortIcon>
+        </th>
+        <th
+          style="min-width: 10%"
+          class="py-3 text-center"
+          pSortableColumn="requestStatus"
+        >
+          Trạng thái <p-sortIcon field="requestStatus"></p-sortIcon>
+        </th>
         <th style="min-width: 10%" class="py-3 text-center">Tuỳ chọn</th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-request>
-      <tr class="p-selectable-row" (click)="onRowSelect(request)">
+      <tr class="p-selectable-row">
         <td class="ps-4">
           {{ request.fund.fundName }}
         </td>
@@ -61,8 +71,8 @@
         <td>
           {{ request.date ? (request.date | date : "dd/MM/yyyy") : "Chưa rõ" }}
         </td>
-        <td class="fw-normal">
-          {{ request.value + " VND"}}
+        <td class="fw-normal text-end">
+          {{ request.value.toLocaleString() + " VND" }}
         </td>
         <td class="d-flex justify-content-center border border-0">
           <p-tag

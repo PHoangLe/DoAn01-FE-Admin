@@ -17,6 +17,7 @@ export class FundCardComponent implements OnInit {
   avatarFile: any;
   isWrongInput: boolean = true;
   selectedFundType: any;
+  isLoading: boolean = false;
   listFundTypes = [
     {
       id: 'FOOD', value: 'Thực phẩm'
@@ -55,6 +56,7 @@ export class FundCardComponent implements OnInit {
   }
 
   public async getFundTransactions() {
+    this.isLoading = true
     await this.donationService.getFundTransactions(this.fund.fundID).then(fundRes => {
       console.log(fundRes)
       this.fundTransactionsList = fundRes;
@@ -63,7 +65,7 @@ export class FundCardComponent implements OnInit {
       .catch(error => {
         console.log(error.error.message)
       })
-    // this.isLoading = false
+    this.isLoading = false
   }
 
   getSeverity(status: string) {

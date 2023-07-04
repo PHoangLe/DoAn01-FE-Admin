@@ -8,7 +8,7 @@ import { FormBuilder, Validators } from '@angular/forms';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
 
   protected userEmail: string;
   protected userPassword: string;
@@ -18,6 +18,9 @@ export class LoginComponent {
     private loginService: LoginService,
     private builder: FormBuilder,
     private router: Router) { }
+  ngOnInit(): void {
+    sessionStorage.clear();
+  }
 
   loginForm = this.builder.group({
     userEmail: this.builder.control('', [Validators.required]),

@@ -44,7 +44,7 @@
       <tr>
         <th style="min-width: 25%" class="py-3 ps-4">Tên quỹ</th>
         <th style="min-width: 10%" class="py-3">Tên người gửi</th>
-        <th style="min-width: 15%" class="py-3">Số tiền</th>
+        <th style="min-width: 15%" class="py-3 text-center">Số tiền</th>
         <th pSortableColumn="date" style="min-width: 10%" class="py-3">
           Ngày gửi yêu cầu <p-sortIcon field="date"></p-sortIcon>
         </th>
@@ -66,24 +66,24 @@
         <td>
           {{ request.user.userEmail }}
         </td>
-        <td>
+        <td class="text-end pe-4">
           {{
             (
               request.numsOfPackage * request.fund.valuePerDonationPackage
-            ).toLocaleString()
+            ).toLocaleString() + " VND"
           }}
         </td>
-        <td>
+        <td class="text-center">
           {{ request.date ? (request.date | date : "dd/MM/yyyy") : "Chưa rõ" }}
         </td>
-        <td class="d-flex text-center border border-0">
+        <td class="text-center border border-0">
           <p-tag
             [value]="
-              (request.donationStatus === 'PENDING'
+              request.donationStatus === 'PENDING'
                 ? 'Đang chờ'
                 : request.donationStatus === 'COMPLETED'
                 ? 'Xác nhận'
-                : 'Từ chối') + 'VND'
+                : 'Từ chối'
             "
             [severity]="getSeverity(request.donationStatus)"
           ></p-tag>
