@@ -26,7 +26,7 @@
   <c-col sm="6" xl="3">
     <c-widget-stat-a class="mb-4 pb-2" color="success" title="Số dư quỹ">
       <ng-template cTemplateId="widgetValueTemplate" ngPreserveWhitespaces>
-        {{ pageStat.totalFundBalance }}
+        {{ pageStat.totalFundBalance.toLocaleString() + " VND" }}
       </ng-template>
     </c-widget-stat-a>
   </c-col>

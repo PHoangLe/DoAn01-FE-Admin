@@ -13,13 +13,35 @@ export class LoginService {
   constructor(private http: HttpClient) { }
 
   async login(email: string, password: string): Promise<any> {
-    console.log(email, password);
-
     return await (this.http.post(this.baseUrl + 'auth/authenticate', {
       userEmail: email,
       userPassword: password
     }, httpOptions
     )).toPromise();
+  }
+
+  setRoles(userRoles: []) {
+    sessionStorage.setItem("userRoles", JSON.stringify(userRoles))
+  }
+  getRoles() {
+    return sessionStorage.getItem("userRoles")
+  }
+
+  setToken(jwtToken: string) {
+    console.log("set token gg ")
+    sessionStorage.setItem("jwtToken", jwtToken)
+  }
+
+  getToken(): string {
+    return sessionStorage.getItem("jwtToken")
+  }
+  roleMatch(allowedRoles: any): boolean {
+    const userRoles = this.getRoles();
+    console.log(userRoles)
+    if (userRoles != null && userRoles)
+      if (userRoles.includes(allowedRoles[0]))
+        return true
+    return false
   }
 
 }

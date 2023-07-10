@@ -34,6 +34,7 @@ export class LoginComponent implements OnInit {
     this.isWrongLogin = false
     this.loginService.login(this.userEmail, this.userPassword).then(response => {
       if (response.userRoles.includes('ROLE_ADMIN')) {
+        sessionStorage.setItem("userRoles", 'ROLE_ADMIN');
         sessionStorage.setItem("jwtToken", JSON.stringify(response.jwtToken));
         sessionStorage.setItem("userID", response.userID.replace('"', ''));
         this.router.navigate(['/dashboard']);
