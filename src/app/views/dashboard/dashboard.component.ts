@@ -39,7 +39,6 @@ export class DashboardComponent implements OnInit {
     this.isLoading = true;
     await this.getStat();
     this.isLoading = false;
-
   }
 
 
