@@ -41,6 +41,11 @@ export const navItems: INavData[] = [
     iconComponent: { name: 'cil-comment-bubble' }
   },
   {
+    name: 'Đổi mật khẩu',
+    url: 'pages/change-password',
+    iconComponent: { name: 'cil-loop-circular' }
+  },
+  {
     name: 'Đăng xuất',
     url: '/login',
     iconComponent: { name: 'cil-account-logout' }

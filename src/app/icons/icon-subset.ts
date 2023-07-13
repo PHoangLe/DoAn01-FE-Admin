@@ -91,7 +91,8 @@ import {
   cilUserUnfollow,
   cilUserPlus,
   cilCommentBubble,
-  cilAccountLogout
+  cilAccountLogout,
+  cilLoopCircular
 } from '@coreui/icons';
 
 export const iconSubset = {
@@ -187,10 +188,12 @@ export const iconSubset = {
   cilUserUnfollow,
   cilUserPlus,
   cilCommentBubble,
-  cilAccountLogout
+  cilAccountLogout,
+  cilLoopCircular
 };
 
 export enum IconSubset {
+  cilLoopCircular = 'cilLoopCircular',
   cilAccountLogout = 'cilAccountLogout',
   cilCommentBubble = 'cilCommentBubble',
   cilUserPlus = 'cilUserPlus',

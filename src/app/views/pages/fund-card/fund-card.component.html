@@ -66,7 +66,32 @@
       [autoResize]="true"
     ></textarea>
   </span>
-
+  <div class="button-group d-flex justify-content-center mt-2">
+    <button
+      type="submit"
+      class="btn btn-primary text-nowrap"
+      *ngIf="!fund.fundID"
+      (click)="addNewFund()"
+    >
+      Thêm
+    </button>
+    <button
+      type="submit"
+      class="btn btn-secondary text-nowrap mt-3 me-3"
+      *ngIf="fund.fundID"
+      (click)="deleteFund()"
+    >
+      Xoá
+    </button>
+    <button
+      type="submit"
+      class="btn btn-primary text-nowrap mt-3"
+      *ngIf="fund.fundID"
+      (click)="updateFund()"
+    >
+      Cập nhật
+    </button>
+  </div>
   <div class="table-wrapper position-relative">
     <h6 class="addressLabel ps-0 my-3">Các giao dịch liên quan đến quỹ</h6>
     <div
@@ -132,7 +157,7 @@
               [severity]="getSeverity(request.transactionType)"
             ></p-tag>
           </td>
-          <td>{{ request.date | date : "dd/mm/yyy" }}</td>
+          <td>{{ request.date | date : "dd/MM/yyy" }}</td>
         </tr>
       </ng-template>
       <ng-template pTemplate="emptymessage">
@@ -143,31 +168,5 @@
     </p-table>
   </div>
 
-  <div class="button-group d-flex justify-content-center mt-4">
-    <button
-      type="submit"
-      class="btn btn-primary text-nowrap"
-      *ngIf="!fund.fundID"
-      (click)="addNewFund()"
-    >
-      Thêm
-    </button>
-    <button
-      type="submit"
-      class="btn btn-secondary text-nowrap mt-3 me-3"
-      *ngIf="fund.fundID"
-      (click)="deleteFund()"
-    >
-      Xoá
-    </button>
-    <button
-      type="submit"
-      class="btn btn-primary text-nowrap mt-3"
-      *ngIf="fund.fundID"
-      (click)="updateFund()"
-    >
-      Cập nhật
-    </button>
-  </div>
   <p-toast key="fund" [preventOpenDuplicates]="true"></p-toast>
 </div>

@@ -11,6 +11,7 @@ import { DonationComponent } from './donation/donation.component';
 import { DonationRequestComponent } from './donation-request/donation-request.component';
 import { FundRequestComponent } from './fund-request/fund-request.component';
 import { ChatComponent } from './chat/chat.component';
+import { ChangePaswordComponent } from './change-pasword/change-pasword.component';
 
 
 const routes: Routes = [
@@ -90,6 +91,13 @@ const routes: Routes = [
     component: ChatComponent,
     data: {
       title: 'Tin nhắn'
+    }
+  },
+  {
+    path: 'change-password',
+    component: ChangePaswordComponent,
+    data: {
+      title: 'Đổi mật khẩu'
     }
   }
 ];

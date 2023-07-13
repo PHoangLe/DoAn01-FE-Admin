@@ -19,6 +19,14 @@ export class LoginService {
     }, httpOptions
     )).toPromise();
   }
+  async changPassword(userEmail, userOldPassword, userNewPassword) {
+    let headers = this.getHttpHeader();
+    return await this.http.put(this.baseUrl + 'user/changePassword', {
+      userEmail: userEmail,
+      userNewPassword: userNewPassword,
+      userOldPassword: userOldPassword
+    }, { headers: headers }).toPromise();
+  }
 
   setRoles(userRoles: []) {
     sessionStorage.setItem("userRoles", JSON.stringify(userRoles))
@@ -44,4 +52,9 @@ export class LoginService {
     return false
   }
 
+  getHttpHeader(): HttpHeaders {
+    return new HttpHeaders({
+      'Authorization': `Bearer ${JSON.parse(sessionStorage.getItem("jwtToken"))}`,
+    });
+  }
 }

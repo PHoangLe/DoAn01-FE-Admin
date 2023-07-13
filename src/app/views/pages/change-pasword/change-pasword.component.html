@@ -1,0 +1,55 @@
+<div class="page-body bg-light min-vh-75 d-flex flex-row align-items-center">
+  <c-container>
+    <c-row class="justify-content-center align-items-center">
+      <c-col md="8" class="container-form">
+        <c-card-group>
+          <c-card class="p-4">
+            <c-card-body>
+              <h1 class="pb-4">Đổi mật khẩu</h1>
+              <!-- <p class="text-medium-emphasis">Sign In to your account</p> -->
+
+              <c-input-group class="mb-3">
+                <span cInputGroupText>
+                  <svg cIcon name="cilUser"></svg>
+                </span>
+                <input
+                  autoComplete="current-password"
+                  cFormControl
+                  placeholder="Mật khẩu hiện tại"
+                  type="password"
+                  [(ngModel)]="oldPassword"
+                />
+              </c-input-group>
+
+              <c-input-group class="mb-3">
+                <span cInputGroupText>
+                  <svg cIcon name="cilLockLocked"></svg>
+                </span>
+                <input
+                  cFormControl
+                  placeholder="Mật khẩu mới"
+                  type="password"
+                  [(ngModel)]="newPassword"
+                />
+              </c-input-group>
+              <div class="mb-2 text-center" *ngIf="isWrongLogin">
+                <small class="text-danger" *ngIf="isWrongLogin"></small>
+              </div>
+              <c-row class="d-flex justify-content-center">
+                <button
+                  cButton
+                  class="px-4 btn btn-primary"
+                  color="primary"
+                  (click)="login()"
+                >
+                  Đổi mật khẩu
+                </button>
+              </c-row>
+            </c-card-body>
+          </c-card>
+        </c-card-group>
+      </c-col>
+    </c-row>
+  </c-container>
+</div>
+<p-toast key="toast"></p-toast>
