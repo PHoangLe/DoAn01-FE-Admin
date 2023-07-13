@@ -35,7 +35,7 @@ export class ShelterDetailComponent {
     this.shelterService.approveShelter(this.requestInfo.shelterID).then(() => {
       this.messageService.add({ key: "message", severity: 'success', detail: 'Chấp nhận yêu cầu' })
       setTimeout(() => {
-        this.router.navigate(['/pasges/shelter-request']);
+        this.router.navigate(['/pages/shelter-request']);
       }, 1500);
     })
   }
@@ -44,7 +44,7 @@ export class ShelterDetailComponent {
     this.shelterService.diapproveShelter(this.requestInfo.shelterID).then(() => {
       this.messageService.add({ key: "message", severity: 'error', detail: 'Từ chối yêu cầu' })
       setTimeout(() => {
-        this.router.navigate(['/pasges/shelter-request']);
+        this.router.navigate(['/pages/shelter-request']);
       }, 1500);
     })
   }
@@ -60,8 +60,6 @@ export class ShelterDetailComponent {
   }
 
   urlToFileType(url: string): string {
-    console.log(url.slice(url.lastIndexOf('.') + 1, url.lastIndexOf('?')));
-
     return url.slice(url.lastIndexOf('.') + 1, url.lastIndexOf('?'))
   }
 }

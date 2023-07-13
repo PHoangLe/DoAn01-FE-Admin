@@ -64,6 +64,11 @@ export class DonationService {
     }, { headers: headers }).toPromise();
   }
 
+  async deleteFund(fundID) {
+    let headers = this.getHttpHeader()
+    return await this.http.delete(this.baseUrl + `funds/${fundID}`, { headers: headers }).toPromise();
+  }
+
 
   async updateFund(fund: Fund) {
     let headers = this.getHttpHeader()
