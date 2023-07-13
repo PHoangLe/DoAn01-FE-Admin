@@ -37,7 +37,7 @@ import { DonationRequestComponent } from './donation-request/donation-request.co
 import { FundCardComponent } from './fund-card/fund-card.component';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { DropdownModule } from 'primeng/dropdown';
-
+import { InputNumberModule } from 'primeng/inputnumber';
 
 import { environment } from 'src/environments/environment'
 import { AngularFireModule } from '@angular/fire/compat';
@@ -94,7 +94,8 @@ import { ChatComponent } from './chat/chat.component';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
     AngularFireStorageModule,
-    DropdownModule
+    DropdownModule,
+    InputNumberModule
   ],
   providers: [
     MessageService,

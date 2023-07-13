@@ -106,6 +106,19 @@ export class FundCardComponent implements OnInit {
       })
   }
 
+  deleteFund() {
+    this.donationService.deleteFund(this.fund.fundID).then((response) => {
+      this.messageService.add({ key: 'fund', severity: 'success', summary: "Xoá thành công!" });
+      this.DonationComponent.getFunds();
+      window.setInterval(() =>
+        this.ref.close(), 1000);
+    })
+      .catch((error) => {
+        console.log(error.error.message)
+        this.messageService.add({ key: 'fund', severity: 'error', summary: error.error.message });
+      })
+  }
+
   async selectedAvatar(event) {
     this.avatarFile = event.target.files;
     const imgInput = <HTMLImageElement>document.getElementById("imgInput")

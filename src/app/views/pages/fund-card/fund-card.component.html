@@ -49,11 +49,12 @@
   </span>
   <span class="p-float-label my-2">
     <h6 class="addressLabel ps-0">Số tiền mỗi gói (VND)</h6>
-    <input
-      class="inputtext px-2 py-1 w-100 rounded-2 border border-1"
+
+    <p-inputNumber
+      inputId="integeronly"
       [(ngModel)]="fund.valuePerDonationPackage"
-      type="number"
-    />
+    >
+    </p-inputNumber>
   </span>
   <span class="w-100 pt-1">
     <h6 class="addressLabel ps-0">Mô tả</h6>
@@ -85,6 +86,7 @@
       [rows]="10"
       styleClass="p-datatable-striped"
       selectionMode="single"
+      emptyMessage="Chưa có giao dịch nào"
       [tableStyle]="{ 'min-width': '25rem' }"
     >
       <ng-template pTemplate="header">
@@ -124,13 +126,18 @@
             <p-tag
               [value]="
                 (request.transactionType == 'USER_TO_FUND'
-                  ? request.value
-                  : '-' + request.value) + ' VND'
+                  ? request.value.toLocaleString()
+                  : '-' + request.value.toLocaleString()) + ' VND'
               "
               [severity]="getSeverity(request.transactionType)"
             ></p-tag>
           </td>
           <td>{{ request.date | date : "dd/mm/yyy" }}</td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="8">Hiện tại chưa có giao dịch nào</td>
         </tr>
       </ng-template>
     </p-table>
@@ -144,6 +151,14 @@
       (click)="addNewFund()"
     >
       Thêm
+    </button>
+    <button
+      type="submit"
+      class="btn btn-secondary text-nowrap mt-3 me-3"
+      *ngIf="fund.fundID"
+      (click)="deleteFund()"
+    >
+      Xoá
     </button>
     <button
       type="submit"

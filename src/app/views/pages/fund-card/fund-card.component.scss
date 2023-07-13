@@ -1,4 +1,11 @@
 :host::ng-deep {
+  p-inputnumber,
+  .p-inputnumber {
+    width: 100%;
+    input {
+      border-radius: 5px;
+    }
+  }
   p-tag > span {
     padding: 5px 10px;
     border-radius: 10px;

@@ -69,16 +69,16 @@ $enable-rtl: true;
     .p-toast-message-content {
       padding: 1rem;
       .p-toast-message-success {
-        background-color: rgb(234, 247, 238);
+        background-color: rgb(102, 228, 140);
       }
       .p-toast-message-alert {
-        background-color: rgb(254, 247, 234);
+        background-color: rgb(231, 177, 77);
       }
       .p-toast-message-info {
-        background-color: rgb(229, 239, 250);
+        background-color: rgb(73, 154, 239);
       }
       .p-toast-message-danger {
-        background-color: rgb(252, 237, 233);
+        background-color: rgb(230, 94, 56);
       }
     }
   }
